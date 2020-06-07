@@ -29,6 +29,7 @@ public:
     
     int MPorder_delete(string order_id);
     
+    int MPorder_getPrice();
     
     
 };

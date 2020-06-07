@@ -16,3 +16,7 @@ int MPorder::MPorder_delete(string order_id){
         return 0;
     }else return -1;
 }
+
+int MPorder::MPorder_getPrice(){
+    return price;
+}

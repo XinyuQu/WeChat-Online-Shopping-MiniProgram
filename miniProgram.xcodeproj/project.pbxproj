@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6F90FA84248C9B70003BD496 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F90FA83248C9B70003BD496 /* main.cpp */; };
 		6F90FA8C248C9E6B003BD496 /* MPorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F90FA8A248C9E6B003BD496 /* MPorder.cpp */; };
+		6F90FA8F248CA8D3003BD496 /* MPcart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F90FA8D248CA8D3003BD496 /* MPcart.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		6F90FA83248C9B70003BD496 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6F90FA8A248C9E6B003BD496 /* MPorder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MPorder.cpp; sourceTree = "<group>"; };
 		6F90FA8B248C9E6B003BD496 /* MPorder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MPorder.hpp; sourceTree = "<group>"; };
+		6F90FA8D248CA8D3003BD496 /* MPcart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MPcart.cpp; sourceTree = "<group>"; };
+		6F90FA8E248CA8D3003BD496 /* MPcart.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MPcart.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				6F90FA83248C9B70003BD496 /* main.cpp */,
 				6F90FA8A248C9E6B003BD496 /* MPorder.cpp */,
 				6F90FA8B248C9E6B003BD496 /* MPorder.hpp */,
+				6F90FA8D248CA8D3003BD496 /* MPcart.cpp */,
+				6F90FA8E248CA8D3003BD496 /* MPcart.hpp */,
 			);
 			path = miniProgram;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F90FA84248C9B70003BD496 /* main.cpp in Sources */,
+				6F90FA8F248CA8D3003BD496 /* MPcart.cpp in Sources */,
 				6F90FA8C248C9E6B003BD496 /* MPorder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
