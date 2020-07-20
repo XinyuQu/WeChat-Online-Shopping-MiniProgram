@@ -23,7 +23,7 @@ MyDB::~MyDB()
 }
 
 
-bool MyDB::initDB(string host,string user,string passwd,string db_name)
+bool MyDB::initDB(string host,string user,string passwd,string db_name, unsigned int port)
 {
     // 函数mysql_real_connect建立一个数据库连接  
     // 成功返回MYSQL*连接句柄，失败返回NULL  
