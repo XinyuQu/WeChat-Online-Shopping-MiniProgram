@@ -41,6 +41,8 @@ bool MyDB::exeSQL(string sql)
     //mysql_query()执行成功返回0,执行失败返回非0值。
     if (mysql_query(mysql,sql.c_str()))
     {
+    
+	cout << "Get error here!!!" << endl;
         cout<<"Query Error: "<<mysql_error(mysql) << endl;
         return false;
     }
