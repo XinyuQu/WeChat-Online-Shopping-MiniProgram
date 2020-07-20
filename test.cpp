@@ -12,7 +12,7 @@ int main()
     db.exeSQL("INSERT mysql values('xq','123');");
     db.exeSQL("INSERT mysql values('xqq','456');");
     //将所有用户信息读出，并输出。
-    db.exeSQL("SELECT * from accounts;");
+    db.exeSQL("SELECT * from mysql;");
 
     return 0;
 }
