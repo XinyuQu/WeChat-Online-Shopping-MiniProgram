@@ -10,7 +10,7 @@ MyDB::MyDB()
     if(mysql==NULL)
     {
         cout<<"Error:"<<mysql_error(mysql);
-        exit(1);
+        //exit(1);
     }
 }
 
@@ -31,7 +31,7 @@ bool MyDB::initDB(string host,string user,string passwd,string db_name, unsigned
     if(mysql == NULL)  
     {  
         cout << "Error: " << mysql_error(mysql);  
-        exit(1);  
+       // exit(1);  
     }  
     return true;  
 }
