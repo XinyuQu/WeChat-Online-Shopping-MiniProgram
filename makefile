@@ -7,12 +7,13 @@ CC = g++
 CFLAGS  = -g -Wall
 
   # the build target executable:
-TARGET = test
+TARGET = MyDB
+TARGET_TEST = test
   
 all: $(TARGET)
 
 $(TARGET): $(TARGET).cpp
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).cpp `mysql_config --CFLAGS --lib`
+	$(CC) $(CFLAGS) -o $(TARGET_TEST).cpp $(TARGET).cpp `mysql_config --clags  --lib`
   
 clean:
 	$(RM) $(TARGET)

@@ -27,7 +27,7 @@ bool MyDB::initDB(string host,string user,string passwd,string db_name)
 {
     // 函数mysql_real_connect建立一个数据库连接  
     // 成功返回MYSQL*连接句柄，失败返回NULL  
-    mysql = mysql_real_connect(mysql, host.c_str(), user.c_str(), passwd.c_str(), db_name.c_str(), 0, NULL, 0);  
+    mysql = mysql_real_connect(mysql, host.c_str(), user.c_str(), passwd.c_str(), db_name.c_str(), port, NULL, 0);  
     if(mysql == NULL)  
     {  
         cout << "Error: " << mysql_error(mysql);  
