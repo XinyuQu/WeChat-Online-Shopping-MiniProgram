@@ -13,10 +13,17 @@ class MyDB
     ~MyDB();
     bool initDB(string host,string user,string pwd,string db_name, unsigned int port); //连接mysql
     bool exeSQL(string sql);   //执行sql语句
-    private:
+
+    //private:
     MYSQL *mysql;          //连接mysql句柄指针
     MYSQL_RES *result;    //指向查询结果的指针
     MYSQL_ROW row;       //按行返回的查询信息
+
+
+    MYSQL_RES *cart_res;
+    MYSQL_RES *customer_res;
+    MYSQL_RES *merchandise_res;
+    MYSQL_RES *order_res;
 };
 
 

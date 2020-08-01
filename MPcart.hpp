@@ -25,12 +25,13 @@ private:
     vector<MPorder> products;
 //    string product_id;
     int quantity;
-    time_t create_time;
-    time_t modify_time;
+    string create_time;
+    string modify_time;
     bool is_del; // true if it's deleted
     
 public:
-    MPcart(string cart_id, string user_id, string cart_detail_id, int quantity, time_t create_time, time_t modify_time, bool is_del) : cart_id(cart_id), user_id(user_id), cart_detail_id(cart_detail_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(false){}
+    MPcart(string cart_id = "", string user_id = "", string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
+    : cart_id(cart_id), user_id(user_id), cart_detail_id(cart_detail_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(is_del){}
     
     int MPcart_delete(string customer_id);
     
