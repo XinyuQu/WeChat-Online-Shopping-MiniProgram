@@ -57,7 +57,7 @@ bool MyDB::exeSQL(string sql)
             {
                 //获取下一行数据
                 row=mysql_fetch_row(result);
-                if(row<0) break;
+                if(row == NULL) break;
 
                 for(int j=0;j<num_fields;j++)  //输出每一字段
                 {
