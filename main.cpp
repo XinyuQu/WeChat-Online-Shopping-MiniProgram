@@ -15,8 +15,8 @@ int main()
     MyDB* db = new MyDB(); 
     //连接数据库
     db->initDB("cdb-54f0tuve.cd.tencentcdb.com","root","R23BN4xO1KGqZBe7SEpufaLNX","ECommerce",10092);
-    MPcart testCart(db,"test_cart_id2");
-    string res = testCart.MPcart_getUserID();
+    MPcart testCart(db,"test_user_id2");
+    string res = testCart.MPcart_getCartID();
     cout << res << endl;
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");

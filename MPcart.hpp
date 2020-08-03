@@ -33,10 +33,12 @@ private:
 
 
 public:
-    MPcart(MyDB* db_cart, string cart_id = "", string user_id = "", string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
+    // 至少要有user id
+    MPcart(MyDB* db_cart, string user_id = "", string cart_id = "", string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
     : db_cart(db_cart), cart_id(cart_id), user_id(user_id), cart_detail_id(cart_detail_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(is_del){}
     
-    string MPcart_getUserID();
+    string MPcart_getCartID();
+
     int MPcart_delete(string customer_id);
     
     // double MPcart_totalPrice(string customer_id);
