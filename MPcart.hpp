@@ -29,11 +29,11 @@ private:
     string create_time;
     string modify_time;
     bool is_del; // true if it's deleted
-    MyDB db_cart;
+    MyDB* db_cart;
 
 
 public:
-    MPcart(MyDB db_cart, string cart_id = "", string user_id = "", string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
+    MPcart(MyDB* db_cart, string cart_id = "", string user_id = "", string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
     : db_cart(db_cart), cart_id(cart_id), user_id(user_id), cart_detail_id(cart_detail_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(is_del){}
     
     string MPcart_getUserID();
