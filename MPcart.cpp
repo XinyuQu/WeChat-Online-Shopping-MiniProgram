@@ -27,16 +27,17 @@ int MPcart::MPcart_delete(string customer_id){
 
 
 string MPcart::MPcart_getUserID(){
-    // string comd = "SELECT user_id from cart_database where cart_id=" + cart_id;
-    string comd = "SELECT * from cart_database;";
+    string comd = "SELECT * FROM cart_database WHERE cart_id='" + cart_id + "';";
+    // string comd = "SELECT * from cart_database where cart_id='test_cart_id2';";
+
+    cout << comd << endl;
+
     if(mysql_query(db_cart->mysql, comd.c_str())){
         cout << "Error!" << endl;
         return "";
     }
     db_cart->result = mysql_store_result(db_cart->mysql);
     return mysql_fetch_row(db_cart->result)[1];
-    // cout << "Success" << endl;
-    // cout << "Hello" << endl;
-    // return "Y";
+
 }
 
