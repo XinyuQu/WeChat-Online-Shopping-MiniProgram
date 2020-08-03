@@ -14,6 +14,7 @@ class MyDB
     bool initDB(string host,string user,string pwd,string db_name, unsigned int port); //连接mysql
     bool exeSQL(string sql);   //执行sql语句
 
+    
     //private:
     MYSQL *mysql;          //连接mysql句柄指针
     MYSQL_RES *result;    //指向查询结果的指针

@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include "MyDB.h"
+#include "MyDB.hpp"
 
 using namespace std;
 
