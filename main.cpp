@@ -18,6 +18,7 @@ int main()
     MPcart testCart(db,"test_user_id2");
     string res = testCart.MPcart_getCartID();
     cout << res << endl;
+    cout << 'hello world' <<endl;
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");
     //db->exeSQL("INSERT INTO cart_database values('test_cart_id2','test_user_id2');");
