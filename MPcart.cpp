@@ -10,32 +10,33 @@
 
 using namespace std;
 
-int MPcart::MPcart_delete(string customer_id){
-    if(!is_del){
-        is_del = true;
-        return 0;
-    }else return -1;
-}
 
-// double MPcart::MPcart_totalPrice(string customer_id){
-//     double totalPrice = 0;
-//     for(MPorder order : products) totalPrice += order.MPorder_getPrice();
-    
-//     return totalPrice;
-    
+//     // assume we have private member for cart_id
+// string MPcart::MPcart_getCartID() const{
+//     // string comd = "SELECT * FROM cart_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
+//     // // cout << comd << endl;
+
+//     // if(mysql_query(db_cart->mysql, comd.c_str())){
+//     //     cout << "Error from MPcart_getCartID!" << endl;
+//     //     return "";
+//     // }
+//     // db_cart->result = mysql_store_result(db_cart->mysql);
+//     // return mysql_fetch_row(db_cart->result)[0];
 // }
 
-
-string MPcart::MPcart_getCartID(){
-    string comd = "SELECT * FROM cart_database WHERE user_id='" + user_id + "';";
-    cout << comd << endl;
+MPcart::MPcart(MyDB* db_cart, string user_id) 
+: db_cart(db_cart), user_id(user_id){
+    string comd = "SELECT * FROM cart_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
+    // cout << comd << endl;
 
     if(mysql_query(db_cart->mysql, comd.c_str())){
-        cout << "Error!" << endl;
-        return "";
+        cout << "Error from MPcart constructor!" << endl;
+        return;
     }
     db_cart->result = mysql_store_result(db_cart->mysql);
-    return mysql_fetch_row(db_cart->result)[0];
-
+    cart_id = mysql_fetch_row(db_cart->result)[0];
 }
 
+
+string MPcart::MPcart_getCartID() const {return cart_id;}
+string MPcart::MPcart_getUserID() const {return user_id;}

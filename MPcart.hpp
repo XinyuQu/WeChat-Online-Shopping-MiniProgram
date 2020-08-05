@@ -9,40 +9,24 @@
 #ifndef MPcart_hpp
 #define MPcart_hpp
 
-#include <stdio.h>
 #include <iostream>
 #include <string>
-#include <vector>
-#include "MPorder.hpp"
 #include "MyDB.hpp"
 
 using namespace std;
 
 class MPcart{
 private:
-    string cart_id;
     string user_id;
-    string cart_detail_id;
-    vector<MPorder> products;
-//    string product_id;
-    int quantity;
-    string create_time;
-    string modify_time;
-    bool is_del; // true if it's deleted
+    string cart_id;
     MyDB* db_cart;
-
 
 public:
     // 至少要有user id
-    MPcart(MyDB* db_cart, string user_id = "", string cart_id = "", string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
-    : db_cart(db_cart), cart_id(cart_id), user_id(user_id), cart_detail_id(cart_detail_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(is_del){}
-    
-    string MPcart_getCartID();
-
-    int MPcart_delete(string customer_id);
-    
-    // double MPcart_totalPrice(string customer_id);
-
+    MPcart(MyDB* db_cart, string user_id);
+    //getter
+    string MPcart_getCartID() const;
+    string MPcart_getUserID() const;    
 };
 
 #endif /* MPcart_hpp */

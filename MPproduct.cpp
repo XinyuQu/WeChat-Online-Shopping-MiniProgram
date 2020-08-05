@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-#include "MPmerchandise.hpp"
+#include "MPproduct.hpp"
 using namespace std;
 
 
