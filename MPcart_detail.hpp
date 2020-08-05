@@ -18,12 +18,20 @@ private:
     MyDB* db_cart_detail;
 
 public:
-    MPcart_detail(MyDB* db_cart_detail, string cart_id, string cart_detail_id = "", int quantity = 0, string create_time = "", string modify_time = "", bool is_del = false) 
-    : db_cart_detail(db_cart_detail), cart_id(cart_id), cart_detail_id(cart_detail_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(is_del){
-        string insert_cmd = "INSERT INTO cart_database"
-    }
 
+    // assume we don't have this row in db before
+    MPcart_detail(MyDB* db_cart_detail, string cart_detail_id, string cart_id, string product_id, int quantity, string create_time, string modify_time, bool is_del);
 
+    // assume we have already had this row in db
+    MPcart_detail(MyDB* db_cart_detail, string cart_id);
+
+    string MPcart_detail_geCartDetailID() const {return cart_detail_id;};
+    string MPcart_detail_getCartID() const {return cart_id;};
+    string MPcart_detail_getProductID() const {return product_id;};
+    int MPcart_detail_getQuantity() const {return quantity;};
+    string MPcart_detail_getCreateTime() const {return create_time;};
+    string MPcart_detail_getModifyTime() const {return modify_time;};
+    bool MPcart_detail_getIsDel() const {return is_del;};
 };
 
 

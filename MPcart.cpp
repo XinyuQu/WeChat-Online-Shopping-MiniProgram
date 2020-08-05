@@ -24,6 +24,17 @@ using namespace std;
 //     // return mysql_fetch_row(db_cart->result)[0];
 // }
 
+MPcart::MPcart(MyDB* db_cart, string user_id, string cart_id):db_cart(db_cart), user_id(user_id), cart_id(cart_id){
+    // need to write exception case when the user_id is actually not in db
+    string cmd = "INSERT INTO cart_database VALUES ('" + cart_id + "','" + user_id + "');";
+    if(mysql_query(db_cart->mysql, cmd.c_str())){
+        cout << "Error from MPcart constructor!" << endl;
+        cout << "Mysql error message: " << mysql_error(db_cart->mysql) << endl;
+        return;
+    }
+}
+
+
 MPcart::MPcart(MyDB* db_cart, string user_id) 
 : db_cart(db_cart), user_id(user_id){
     string comd = "SELECT * FROM cart_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
@@ -31,10 +42,12 @@ MPcart::MPcart(MyDB* db_cart, string user_id)
 
     if(mysql_query(db_cart->mysql, comd.c_str())){
         cout << "Error from MPcart constructor!" << endl;
+        cout << "Mysql error message: " << mysql_error(db_cart->mysql) << endl;
         return;
     }
     db_cart->result = mysql_store_result(db_cart->mysql);
-    cart_id = mysql_fetch_row(db_cart->result)[0];
+    this->db_cart->row = mysql_fetch_row(db_cart->result); // assume user_id is unique
+    this->cart_id = this->db_cart->row[0];
 }
 
 

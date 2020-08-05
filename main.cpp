@@ -7,9 +7,6 @@
 #include "MyDB.hpp"
 using namespace std;
 
-
-void getCart(MyDB& db);
-
 int main()
 {
     MyDB* db = new MyDB(); 
@@ -18,6 +15,13 @@ int main()
     MPcart testCart(db,"test_user_id2");
     string res = testCart.MPcart_getCartID();
     cout << res << endl;
+
+    // MPcart testCart2(db, "user_id_3", "cart_id_3");
+    MPcart testCart2(db, "user_id_3");
+    cout << "testCart2 cart: " << testCart2.MPcart_getCartID() << endl;
+    cout << "testCart2 user: " << testCart2.MPcart_getUserID() << endl;
+
+
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");
     //db->exeSQL("INSERT INTO cart_database values('test_cart_id2','test_user_id2');");
