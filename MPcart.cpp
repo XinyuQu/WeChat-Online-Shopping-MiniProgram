@@ -53,3 +53,17 @@ MPcart::MPcart(MyDB* db_cart, string user_id)
 
 string MPcart::MPcart_getCartID() const {return cart_id;}
 string MPcart::MPcart_getUserID() const {return user_id;}
+
+int MPcart::MPcart_setCartID(string newid){
+    string comd = "UPDATE cart_database FROM user_id = newid WHERE user_id='" + user_id + "';";
+    cout << comd << endl;
+
+    if(mysql_query(db_cart->mysql, comd.c_str())){
+        cout << "Error from MPcart setCartID!" << endl;
+        return -1;
+    }
+    cart_id = newid;
+    db_cart->result = mysql_store_result(db_cart->mysql);
+    return 0;
+    //cart_id = mysql_fetch_row(db_cart->result)[0];
+}

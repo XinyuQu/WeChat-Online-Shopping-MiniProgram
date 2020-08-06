@@ -14,13 +14,12 @@ int main()
     db->initDB("cdb-54f0tuve.cd.tencentcdb.com","root","R23BN4xO1KGqZBe7SEpufaLNX","ECommerce",10092);
     MPcart testCart(db,"test_user_id2");
     string res = testCart.MPcart_getCartID();
+    int i = testCart.MPcart_setCartID("new_user_id");
     cout << res << endl;
-
     // MPcart testCart2(db, "user_id_3", "cart_id_3");
     MPcart testCart2(db, "user_id_3");
     cout << "testCart2 cart: " << testCart2.MPcart_getCartID() << endl;
     cout << "testCart2 user: " << testCart2.MPcart_getUserID() << endl;
-
 
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");
