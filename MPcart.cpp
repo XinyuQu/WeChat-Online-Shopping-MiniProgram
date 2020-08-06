@@ -54,7 +54,7 @@ MPcart::MPcart(MyDB* db_cart, string user_id)
 string MPcart::MPcart_getCartID() const {return cart_id;}
 string MPcart::MPcart_getUserID() const {return user_id;}
 
-int MPcart::MPcart_setCartID(string newid){
+int MPcart::MPcart_setCartID(const string& newid){
     string comd = "UPDATE cart_database FROM user_id = newid WHERE user_id='" + user_id + "';";
     cout << comd << endl;
 
