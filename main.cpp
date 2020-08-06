@@ -17,6 +17,7 @@ int main()
     db->initDB("cdb-54f0tuve.cd.tencentcdb.com","root","R23BN4xO1KGqZBe7SEpufaLNX","ECommerce",10092);
     MPcart testCart(db,"test_user_id2");
     string res = testCart.MPcart_getCartID();
+    int i = testCart.MPcart_setCartID("new_user_id");
     cout << res << endl;
     cout << 'hello world' <<endl;
     cout << 'lala' <<endl;

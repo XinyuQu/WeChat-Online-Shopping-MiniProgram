@@ -27,6 +27,7 @@ public:
     //getter
     string MPcart_getCartID() const;
     string MPcart_getUserID() const;    
+    int MPcart_setCartID(string user_id);
 };
 
 #endif /* MPcart_hpp */
