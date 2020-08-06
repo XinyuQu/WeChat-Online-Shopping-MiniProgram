@@ -60,9 +60,10 @@ int MPcart::MPcart_setCartID(const string& newid){
 
     if(mysql_query(db_cart->mysql, comd.c_str())){
         cout << "Error from MPcart setCartID!" << endl;
+        cout << "Mysql error message: " << mysql_error(db_cart->mysql) << endl;
         return -1;
     }
-    cart_id = newid;
+    this->cart_id = newid;
     db_cart->result = mysql_store_result(db_cart->mysql);
     return 0;
     //cart_id = mysql_fetch_row(db_cart->result)[0];

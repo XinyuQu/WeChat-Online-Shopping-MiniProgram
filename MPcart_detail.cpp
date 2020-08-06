@@ -6,7 +6,15 @@ using namespace std;
 MPcart_detail::MPcart_detail(MyDB* db_cart_detail, string cart_detail_id, string cart_id, string product_id, int quantity, string create_time, string modify_time, bool is_del)
 :db_cart_detail(db_cart_detail), cart_detail_id(cart_detail_id), cart_id(cart_id), product_id(product_id), quantity(quantity), create_time(create_time), modify_time(modify_time), is_del(is_del) {
     string cmd = "INSERT INTO cart_detail_database VALUES ('" + cart_detail_id + "','" + cart_id + "','" 
-    + product_id + "','" + quantity + "','" + create_time + "','" + modify_time + "','" + is_del "');";
+    + product_id + "'," + to_string(quantity) + ",";
+    
+    // SELECT STR_TO_DATE("2017,8,14 10,40,10", "%Y,%m,%d %h,%i,%s");
+    cmd += "STR_TO_DATE(\"" + create_time  + "\", \"%Y,%m,%d %h,%i,%s\") , ";
+    cmd += "STR_TO_DATE(\"" + modify_time  + "\", \"%Y,%m,%d %h,%i,%s\") , ";
+    // 0 = true; 1 = false
+    if(is_del) cmd += "'" + to_string(0) + "');";
+    else cmd += "'" + to_string(0) + "');";
+
     if(mysql_query(db_cart_detail->mysql, cmd.c_str())){
         cout << "Error from MPcart_detail constructor!" << endl;
         cout << "Mysql error message: " << mysql_error(db_cart_detail->mysql) << endl;

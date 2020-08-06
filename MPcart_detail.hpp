@@ -12,7 +12,7 @@ private:
     string cart_id;
     string product_id;
     int quantity;
-    string create_time;
+    string create_time; // format: "2017,8,14 10,40,10", "%Y,%m,%d %h,%i,%s"
     string modify_time;
     bool is_del; // true if it's deleted
     MyDB* db_cart_detail;

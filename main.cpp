@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "MPcart.hpp"
+#include "MPcart_detail.hpp"
 // #include "MPcustomer.hpp"
 // #include "MPmerchandise.hpp"
 // #include "MPorder.hpp"
@@ -16,10 +17,20 @@ int main()
     string res = testCart.MPcart_getCartID();
     int i = testCart.MPcart_setCartID("new_user_id");
     cout << res << endl;
+
     // MPcart testCart2(db, "user_id_3", "cart_id_3");
     MPcart testCart2(db, "user_id_3");
     cout << "testCart2 cart: " << testCart2.MPcart_getCartID() << endl;
     cout << "testCart2 user: " << testCart2.MPcart_getUserID() << endl;
+
+    for(int i = 0; i < 40; i++)cout << "-";
+    cout << endl;
+
+    // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
+    
+    // MPcart_detail test1_cart_detail(db, "cart_id_1");
+    // cout << "cart_detail_1: detail_ID  " << test1_cart_detail.MPcart_detail_geCartDetailID() << endl;
+
 
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");
