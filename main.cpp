@@ -13,10 +13,15 @@ int main()
     MyDB* db = new MyDB(); 
     //连接数据库
     db->initDB("cdb-54f0tuve.cd.tencentcdb.com","root","R23BN4xO1KGqZBe7SEpufaLNX","ECommerce",10092);
-    MPcart testCart(db,"test_user_id2");
+    MPcart testCart(db,"new_user_id");
     string res = testCart.MPcart_getCartID();
-    int i = testCart.MPcart_setCartID("new_user_id");
-    cout << res << endl;
+    cout << "testCart original ID: " << res << endl;
+
+    int i = testCart.MPcart_setCartID("new_user_id_3");
+    res = testCart.MPcart_getCartID();
+    cout << "New cart ID" << res << endl;
+    for(int i = 0; i < 40; i++)cout << "-";
+    cout << endl;
 
     // MPcart testCart2(db, "user_id_3", "cart_id_3");
     MPcart testCart2(db, "user_id_3");

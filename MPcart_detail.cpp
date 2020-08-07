@@ -13,7 +13,7 @@ MPcart_detail::MPcart_detail(MyDB* db_cart_detail, string cart_detail_id, string
     cmd += "STR_TO_DATE(\"" + modify_time  + "\", \"%Y,%m,%d %h,%i,%s\") , ";
     // 0 = true; 1 = false
     if(is_del) cmd += "'" + to_string(0) + "');";
-    else cmd += "'" + to_string(0) + "');";
+    else cmd += "'" + to_string(1) + "');";
 
     if(mysql_query(db_cart_detail->mysql, cmd.c_str())){
         cout << "Error from MPcart_detail constructor!" << endl;
