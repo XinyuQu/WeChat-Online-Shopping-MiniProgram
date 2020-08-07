@@ -24,7 +24,7 @@ MPcart_detail::MPcart_detail(MyDB* db_cart_detail, string cart_detail_id, string
 
 // assume we have already had this row in db
 MPcart_detail::MPcart_detail(MyDB* db_cart_detail, string cart_id):db_cart_detail(db_cart_detail), cart_id(cart_id){
-    string comd = "SELECT * FROM cart_database WHERE cart_id='" + cart_id + "';"; // assume cart id is unique
+    string comd = "SELECT * FROM cart_detail_database WHERE cart_id='" + cart_id + "';"; // assume cart id is unique
     // cout << comd << endl;
 
     if(mysql_query(db_cart_detail->mysql, comd.c_str())){
@@ -34,6 +34,11 @@ MPcart_detail::MPcart_detail(MyDB* db_cart_detail, string cart_id):db_cart_detai
     }
     db_cart_detail->result = mysql_store_result(db_cart_detail->mysql);
     this->db_cart_detail->row = mysql_fetch_row(db_cart_detail->result); // assume the cart_id is unique
+    
+    // int num_fields = mysql_num_fields(db_cart_detail->result);
+    // cout << "fields: " << num_fields << endl;
+    // cout << "row[0] " << this->db_cart_detail->row[0] << endl; 
+    
     this->cart_detail_id = this->db_cart_detail->row[0];
     this->product_id = this->db_cart_detail->row[2];
     this->quantity = stoi(this->db_cart_detail->row[3]);

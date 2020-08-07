@@ -28,8 +28,8 @@ int main()
 
     // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
     
-    // MPcart_detail test1_cart_detail(db, "cart_id_1");
-    // cout << "cart_detail_1: detail_ID  " << test1_cart_detail.MPcart_detail_geCartDetailID() << endl;
+    MPcart_detail test1_cart_detail(db, "cart_id_1");
+    cout << "cart_detail_1: detail_ID  " << test1_cart_detail.MPcart_detail_getIsDel() << endl;
 
 
     //将用户信息添加到数据库

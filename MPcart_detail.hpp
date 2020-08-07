@@ -25,7 +25,7 @@ public:
     // assume we have already had this row in db
     MPcart_detail(MyDB* db_cart_detail, string cart_id);
 
-    string MPcart_detail_geCartDetailID() const {return cart_detail_id;};
+    string MPcart_detail_getCartDetailID() const {return cart_detail_id;};
     string MPcart_detail_getCartID() const {return cart_id;};
     string MPcart_detail_getProductID() const {return product_id;};
     int MPcart_detail_getQuantity() const {return quantity;};

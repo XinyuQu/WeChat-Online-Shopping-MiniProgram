@@ -42,7 +42,7 @@ bool MyDB::exeSQL(string sql)
     if (mysql_query(mysql,sql.c_str()))
     {
     
-	cout << "Get error here!!!" << endl;
+	    cout << "Get error here!!!" << endl;
         cout<<"Query Error: "<<mysql_error(mysql) << endl;
         return false;
     }
