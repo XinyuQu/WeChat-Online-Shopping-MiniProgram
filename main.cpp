@@ -41,18 +41,18 @@ int main()
     // cout << "!!!" << endl;
     // cout << "New user ID " << res << endl;
 
-    // // MPcart testCart2(db, "user_id_3", "cart_id_3");
-    // MPcart testCart2(db, "user_id_3");
-    // cout << "testCart2 cart: " << testCart2.MPcart_getCartID() << endl;
-    // cout << "testCart2 user: " << testCart2.MPcart_getUserID() << endl;
-
     // for(int i = 0; i < 40; i++)cout << "-";
     // cout << endl;
 
+    // test MPcart detail's constructor (success)
     // // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
     
-    // MPcart_detail test1_cart_detail(db, "cart_id_1");
-    // cout << "cart_detail_1: detail_ID  " << test1_cart_detail.MPcart_detail_getIsDel() << endl;
+
+    // test MPcart_detail setter (all pass)
+    // MPcart_detail test1_cart_detail(db, "new_cart_id_1");
+    // cout << "origin:  " << test1_cart_detail.MPcart_detail_getCartDetailID() << endl;
+    // int res = test1_cart_detail.MPcart_detail_setIsDel(false);
+    // cout << "updated: " << test1_cart_detail.MPcart_detail_getIsDel() << endl;
 
 
     //将用户信息添加到数据库
