@@ -2,7 +2,7 @@
 #include <vector>
 #include "MPcart.hpp"
 #include "MPcart_detail.hpp"
-// #include "MPcustomer.hpp"
+#include "MPcustomer.hpp"
 // #include "MPmerchandise.hpp"
 // #include "MPorder.hpp"
 #include "MyDB.hpp"
@@ -17,7 +17,7 @@ int main()
 
     // // test set cart id (success)
 
-    // MPcart testCart(db,"test_user_id");
+    // MPcart testCart(db,"user_id_3");
     // string res = testCart.MPcart_getCartID();
     // cout << "testCart original ID: " << res << endl;
 
@@ -53,6 +53,11 @@ int main()
     // cout << "origin:  " << test1_cart_detail.MPcart_detail_getCartDetailID() << endl;
     // int res = test1_cart_detail.MPcart_detail_setIsDel(false);
     // cout << "updated: " << test1_cart_detail.MPcart_detail_getIsDel() << endl;
+
+    // test MPcustomer constructor and getters (pass)
+    // MPcustomer testCustomer(db, "userId");
+    // cout << "success: " << testCustomer.MPcustomer_getemail() << endl;
+    
 
 
     //将用户信息添加到数据库

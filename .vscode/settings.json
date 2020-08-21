@@ -1,3 +1,8 @@
 {
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "files.associations": {
+        "string": "cpp",
+        "iosfwd": "cpp"
+    },
+    "C_Cpp.dimInactiveRegions": false
 }

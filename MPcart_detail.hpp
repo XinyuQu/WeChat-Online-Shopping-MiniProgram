@@ -12,7 +12,7 @@ private:
     string cart_id;
     string product_id;
     int quantity;
-    string create_time; // format: "2020-08-06 00:00:00", "%Y,%m,%d %h,%i,%s"
+    string create_time; // format: ""2020,8,6 12,00,00"", "%Y,%m,%d %h,%i,%s"
     string modify_time;
     bool is_del; // true if it's deleted (1)
     MyDB* db_cart_detail;

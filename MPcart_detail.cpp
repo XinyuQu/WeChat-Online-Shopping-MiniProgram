@@ -33,6 +33,16 @@ MPcart_detail::MPcart_detail(MyDB* db_cart_detail, string cart_id):db_cart_detai
         return;
     }
     db_cart_detail->result = mysql_store_result(db_cart_detail->mysql);
+    if(!db_cart_detail->result){
+        cout << "Error! Can't retrieve any result from database(MPcart_detail)" << endl;
+        return;
+    }
+    
+    int num_rows = mysql_num_rows(db_cart_detail->result);
+    if(num_rows > 1){
+        cout << "Error! More than one cart have same ID!(MPcart_detail)" << endl;
+        return;
+    }
     this->db_cart_detail->row = mysql_fetch_row(db_cart_detail->result); // assume the cart_id is unique
     
     // int num_fields = mysql_num_fields(db_cart_detail->result);
