@@ -23,6 +23,7 @@ public:
     MPcart_detail(MyDB* db_cart_detail, string cart_detail_id, string cart_id, string product_id, int quantity, string create_time, string modify_time, bool is_del);
 
     // assume we have already had this row in db
+    
     MPcart_detail(MyDB* db_cart_detail, string cart_id);
 
     string MPcart_detail_getCartDetailID() const {return cart_detail_id;};

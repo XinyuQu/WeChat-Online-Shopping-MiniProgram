@@ -54,17 +54,33 @@ MPcart::MPcart(MyDB* db_cart, string user_id)
 string MPcart::MPcart_getCartID() const {return cart_id;}
 string MPcart::MPcart_getUserID() const {return user_id;}
 
-int MPcart::MPcart_setCartID(const string& newid){
-    string comd = "UPDATE cart_database SET user_id = '" + newid + "' WHERE user_id='" + user_id + "';";
-    cout << comd << endl;
+int MPcart::MPcart_setCartID(const string& newCartId){
+    string cmd = "UPDATE cart_database SET cart_id = '" + newCartId + "' WHERE user_id='" + user_id + "';";
+    // cout << comd << endl;
 
-    if(mysql_query(db_cart->mysql, comd.c_str())){
+    if(mysql_query(db_cart->mysql, cmd.c_str())){
         cout << "Error from MPcart setCartID!" << endl;
         cout << "Mysql error message: " << mysql_error(db_cart->mysql) << endl;
         return -1;
     }
-    this->cart_id = newid;
+    this->cart_id = newCartId;
     db_cart->result = mysql_store_result(db_cart->mysql);
     return 0;
     //cart_id = mysql_fetch_row(db_cart->result)[0];
 }
+
+
+// int MPcart::MPcart_setUserID(const string& newUserId){
+//     string cmd = "UPDATE cart_database SET user_id = '" + newUserId + "' WHERE user_id='" + user_id + "';";
+//     // cout << comd << endl;
+
+//     if(mysql_query(db_cart->mysql, cmd.c_str())){
+//         cout << "Error from MPcart setCartID!" << endl;
+//         cout << "Mysql error message: " << mysql_error(db_cart->mysql) << endl;
+//         return -1;
+//     }
+//     this->user_id = newUserId;
+//     db_cart->result = mysql_store_result(db_cart->mysql);
+//     return 0;
+// }
+
