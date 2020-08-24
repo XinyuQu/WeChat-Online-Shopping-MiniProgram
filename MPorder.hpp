@@ -9,8 +9,9 @@
 #ifndef MPorder_hpp
 #define MPorder_hpp
 
-#include <stdio.h>
+#include <iostream>
 #include <string>
+#include "MyDB.hpp"
 
 using namespace std;
 
@@ -18,20 +19,23 @@ class MPorder{
 private:
     string order_id;
     string user_id;
-    double price;
+    double price; // length 10,2
     string remark;
-    time_t create_time;
+    string create_time; // format: ""2020,8,6 12,00,00"", "%Y,%m,%d %h,%i,%s"
     bool is_del; // true if it's deleted
+    MyDB* db_order;
     
 public:
-    MPorder(string order_id, string user_id, double price, string remark, time_t create_time, bool is_del):
-    order_id(order_id),user_id(user_id),price(price),remark(remark),create_time(create_time),is_del(false){}
+    // assume we don't have this row in db before
+    MPorder(MyDB* db_order, string order_id, string user_id, double price, string remark, string create_time, bool is_del);
     
-    int MPorder_delete(string order_id);
+    // assume we have already have this row in db
+    MPorder(MyDB* db_order, string order_id);
     
-    int MPorder_getPrice();
-    
-    
+
+    // getters
+
+    // setters
 };
 
 #endif /* MPorder_hpp */

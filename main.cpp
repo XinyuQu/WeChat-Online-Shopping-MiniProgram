@@ -47,6 +47,9 @@ int main()
     // test MPcart detail's constructor (success)
     // // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
     
+    MPcart_detail testDetail(db, "new_cart_id_1");
+    cout << "Detail: " << testDetail.MPcart_detail_getCartID() << endl;
+
 
     // test MPcart_detail setter (all pass)
     // MPcart_detail test1_cart_detail(db, "new_cart_id_1");

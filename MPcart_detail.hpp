@@ -13,7 +13,7 @@ private:
     string product_id;
     int quantity;
     string create_time; // format: ""2020,8,6 12,00,00"", "%Y,%m,%d %h,%i,%s"
-    string modify_time;
+    string modify_time; // format: ""2020,8,6 12,00,00"", "%Y,%m,%d %h,%i,%s"
     bool is_del; // true if it's deleted (1)
     MyDB* db_cart_detail;
 
@@ -27,13 +27,13 @@ public:
     MPcart_detail(MyDB* db_cart_detail, string cart_id);
 
     // getters
-    string MPcart_detail_getCartDetailID() const {return cart_detail_id;};
-    string MPcart_detail_getCartID() const {return cart_id;};
-    string MPcart_detail_getProductID() const {return product_id;};
-    int MPcart_detail_getQuantity() const {return quantity;};
-    string MPcart_detail_getCreateTime() const {return create_time;};
-    string MPcart_detail_getModifyTime() const {return modify_time;};
-    bool MPcart_detail_getIsDel() const {return is_del;};
+    string MPcart_detail_getCartDetailID() const {return cart_detail_id;}
+    string MPcart_detail_getCartID() const {return cart_id;}
+    string MPcart_detail_getProductID() const {return product_id;}
+    int MPcart_detail_getQuantity() const {return quantity;}
+    string MPcart_detail_getCreateTime() const {return create_time;}
+    string MPcart_detail_getModifyTime() const {return modify_time;}
+    bool MPcart_detail_getIsDel() const {return is_del;}
 
     // setters that use cart id to search in database; success returns 0, fail returns -1
     int MPcart_detail_setCartDetailID(const string& newDetailID);
