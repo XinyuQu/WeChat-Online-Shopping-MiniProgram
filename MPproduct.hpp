@@ -39,8 +39,17 @@ class MPproduct
     string MPproduct_getModifyBy() const {return modify_by;}
     bool MPproduct_getIsDel() const {return is_del;}
 
-    //setters
-
+    // setters that use product id to search in database; success returns 0, fail returns -1
+    int MPproduct_setProductID(const string& str);
+    int MPproduct_setProductName(const string& str);
+    int MPproduct_setDetail(const string& str);
+    int MPproduct_setPrice(const int num);
+    int MPproduct_setThumbnail(const string& str);
+    int MPproduct_setCreateTime(const string& str); // be careful with the format: 2020-08-06 00:00:00
+    int MPproduct_setCreateBy(const string& str);
+    int MPproduct_setModifyTime(const string& str); // be careful with the format: 2020-08-06 00:00:00
+    int MPproduct_setModifyBy(const string& str);
+    int MPproduct_setIsDel(const bool newDel);
   
 };
 #endif
