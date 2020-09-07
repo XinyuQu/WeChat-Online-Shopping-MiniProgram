@@ -1,16 +1,8 @@
-//
-//  MPorder.hpp
-//  miniProgram
-//
-//  Created by Xinyu Qu on 6/7/20.
-//  Copyright © 2020 Xinyu Qu. All rights reserved.
-//
-
 #ifndef MPorder_hpp
 #define MPorder_hpp
-
-#include <stdio.h>
+#include <iostream>
 #include <string>
+#include "MyDB.hpp"
 
 using namespace std;
 
@@ -24,13 +16,27 @@ private:
     bool is_del; // true if it's deleted
     
 public:
-    MPorder(string order_id, string user_id, double price, string remark, time_t create_time, bool is_del):
-    order_id(order_id),user_id(user_id),price(price),remark(remark),create_time(create_time),is_del(false){}
-    
-    int MPorder_delete(string order_id);
-    
-    int MPorder_getPrice();
-    
+    // assume we don't have this row in db before
+    MPorder(MyDB* db_order, string order_id, string user_id, double price, string remark, time_t create_time, bool is_del);
+
+    // assume we have already had this row in db
+    MPorder(MyDB* db_order, string user_id);
+
+    //getters
+    string MPorder_getOrderID() const {return order_id;};
+    string MPorder_getUserID() const {return user_id;};
+    double MPorder_getPrice() const {return price;};
+    string MPorder_remark() const {return remark;};
+    time_t MPorder_getCreateTime() const {return create_time;};
+    bool MPorder_getIsDel() const {return is_del;};
+
+    // setters - success returns 0, fail returns -1
+    //set new order_id and update new price at the same time
+    int MPorder_setOrderID(const string& newOrderID);
+    int MPorder_setUserID(const string& newUserID);
+    int MPorder_setRemark(const string& newRemark);
+    int MPcart_detail_setCreateTime(const time_t& newCreateTime); // be careful with the format: 2020-08-06 00:00:00
+    int MPcart_detail_setIsDel(const bool newDel);
     
 };
 
