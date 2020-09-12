@@ -3,6 +3,74 @@
 
 using namespace std;
 
+// constructor
+
+// assume we don't have this row in db before
+MPproduct::MPproduct(MyDB* db_product, string product_id, string product_name, string detail, double price, string thumbnail, string create_time, string create_by, string modify_time, string modify_by, bool is_del)
+: db_product(db_product), product_id(product_id), product_name(product_name), detail(detail), price(price), thumbnail(thumbnail), create_time(create_time), create_by(create_by), modify_time(modify_time), modify_by(modify_by), is_del(is_del){
+    string cmd = "INSERT INTO product_database VALUES ('" + product_id + "','" + product_name + "','" 
+    + detail + "'," + to_string(price) + ",'" + thumbnail + "',";
+    
+    // SELECT STR_TO_DATE("2017,8,14 10,40,10", "%Y,%m,%d %h,%i,%s");
+    cmd += "STR_TO_DATE(\"" + create_time  + "\", \"%Y,%m,%d %h,%i,%s\") , ";
+    
+    cmd += "'" + create_by + "',";
+
+    cmd += "STR_TO_DATE(\"" + modify_time  + "\", \"%Y,%m,%d %h,%i,%s\") , ";
+
+    cmd += "'" + modify_by + "',";
+
+    // 0 = true; 1 = false
+    if(is_del) cmd += "'" + to_string(1) + "');";
+    else cmd += "'" + to_string(0) + "');";
+
+    if(mysql_query(db_product->mysql, cmd.c_str())){
+        cout << "Error from MPproduct constructor!" << endl;
+        cout << "Mysql error message: " << mysql_error(db_product->mysql) << endl;
+        return;
+    }
+
+}
+
+// assume we have already had this row in db
+MPproduct::MPproduct(MyDB* db_product, string product_id) : db_product(db_product), product_id(product_id){
+    string comd = "SELECT * FROM product_database WHERE product_id='" + product_id + "';"; // assume cart id is unique
+    // cout << comd << endl;
+
+    if(mysql_query(db_product->mysql, comd.c_str())){
+        cout << "Error from MPproduct constructor!" << endl;
+        cout << "Mysql error message: " << mysql_error(db_product->mysql) << endl;
+        return;
+    }
+    db_product->result = mysql_store_result(db_product->mysql);
+    if(!db_product->result){
+        cout << "Error! Can't retrieve any result from database(MPproduct)" << endl;
+        return;
+    }
+    
+    int num_rows = mysql_num_rows(db_product->result);
+    if(num_rows > 1){
+        cout << "Error! More than one cart have same ID!(MPproduct)" << endl;
+        return;
+    }
+    this->db_product->row = mysql_fetch_row(db_product->result); // assume the cart_id is unique
+    
+    // int num_fields = mysql_num_fields(db_cart_detail->result);
+    // cout << "fields: " << num_fields << endl;
+    // cout << "row[0] " << this->db_cart_detail->row[0] << endl; 
+    
+    this->product_name = this->db_product->row[1];
+    this->detail = this->db_product->row[2];
+    this->price = stoi(this->db_product->row[3]);
+    this->thumbnail = this->db_product->row[4];
+    this->create_time = this->db_product->row[5];
+    this->create_by = this->db_product->row[6];
+    this->modify_time = this->db_product->row[7];
+    this->modify_by = this->db_product->row[8];
+    this->is_del = this->db_product->row[9];
+}
+
+
 // setters that use product id to search in database; success returns 0, fail returns -1
 int MPproduct::MPproduct_setProductID(const string& str){
     string cmd = "UPDATE product_database SET product_id = '" + str + "' WHERE product_id='" + product_id + "';";

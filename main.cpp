@@ -3,8 +3,7 @@
 #include "MPcart.hpp"
 #include "MPcart_detail.hpp"
 #include "MPcustomer.hpp"
-// #include "MPmerchandise.hpp"
-// #include "MPorder.hpp"
+#include "MPproduct.hpp"
 #include "MyDB.hpp"
 using namespace std;
 
@@ -62,6 +61,10 @@ int main()
     // cout << "success: " << testCustomer.MPcustomer_getemail() << endl;
     
 
+    // test MPproduct constructor
+    MPproduct testProduct(db, "id");
+    testProduct.MPproduct_setCreateBy("c");
+    cout << "product: " << testProduct.MPproduct_getCreateBy() << endl;
 
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");
