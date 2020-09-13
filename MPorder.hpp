@@ -36,8 +36,8 @@ public:
     int MPorder_setOrderID(const string& newOrderID);
     int MPorder_setUserID(const string& newUserID);
     int MPorder_setRemark(const string& newRemark);
-    int MPcart_detail_setCreateTime(const string& newCreateTime); // be careful with the format: 2020-08-06 00:00:00
-    int MPcart_detail_setIsDel(const bool newDel);
+    int MPorder_setCreateTime(const string& newCreateTime); // be careful with the format: 2020-08-06 00:00:00
+    int MPorder_setIsDel(const bool newDel);
     
 };
 

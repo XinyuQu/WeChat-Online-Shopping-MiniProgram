@@ -61,14 +61,14 @@ int MPorder::MPorder_setOrderID(const string& newOrderID){
     db_order->result = mysql_store_result(db_order->mysql);
     if(!db_order->result){
         cout << "Error! Can't retrieve any result from order_detail_database(MPorder setOrderID)" << endl;
-        return;
+        return -1;
     }
     int num_rows=mysql_num_rows(db_order->result);
     for(int i=0;i<num_rows;i++)
         {
             db_order->row=mysql_fetch_row(db_order->result);
             if(db_order->row == NULL) break;
-            totalprice += db_order->row[3]
+            totalprice += stod(db_order->row[3]);
         }
     this->price = totalprice;
 

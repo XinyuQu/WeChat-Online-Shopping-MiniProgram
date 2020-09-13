@@ -1,4 +1,5 @@
 #include "MPorder_detail.hpp"
+#include <string>
 
 using namespace std;
 
@@ -38,7 +39,7 @@ MPorder_detail::MPorder_detail(MyDB* db_order_detail, string order_id):db_order_
     this->db_order_detail->row = mysql_fetch_row(db_order_detail->result); // assume the order_id is unique    
     this->order_detail_id = this->db_order_detail->row[0];
     this->cart_detail_id = this->db_order_detail->row[2];
-    this->price = this->db_order_detail->row[3];
+    this->price = stod(this->db_order_detail->row[3]);
 }
 
 
@@ -65,7 +66,7 @@ int MPorder_detail::MPorder_detail_setOrderID(const string& newOrderID){
         return -1;
     }
     this->order_id = newOrderID;
-    db_cart_detail->result = mysql_store_result(db_cart_detail->mysql);
+    db_order_detail->result = mysql_store_result(db_order_detail->mysql);
     return 0;
 }
 
@@ -75,26 +76,26 @@ int MPorder_detail::MPorder_detail_setCartDetailID(const string& newCartDetailID
     if(mysql_query(db_order_detail->mysql, comd.c_str())){
         cout << "Error from MPorder_detail setCartDetailID getting price with cart_detail_id!" << endl;
         cout << "Mysql error message: " << mysql_error(db_order_detail->mysql) << endl;
-        return;
+        return -1;
     }
     db_order_detail->result = mysql_store_result(db_order_detail->mysql);
     if(!db_order_detail->result){
         cout << "Error! Can't retrieve any result from cart_detail_database(MPorder_detail setCartDetailID)" << endl;
-        return;
+        return -1;
     }
     
     int num_rows = mysql_num_rows(db_order_detail->result);
     if(num_rows > 1){
         cout << "Error! More than one cart_detail have same ID!(MPorder_detail setCartDetailID)" << endl;
-        return;
+        return -1;
     }
     this->db_order_detail->row = mysql_fetch_row(db_order_detail->result); // assume the order_id is unique    
     string product_id = this->db_order_detail->row[2];
-    int quantity = this->db_order_detail->row[3];  
+    int quantity = stoi(this->db_order_detail->row[3]);  
     //get the product price with the new product_id accordingly in product_database
     MPproduct ProductInfo(db_order_detail, product_id);
     cout << "Error from MPorder_detail setCartDetailID getting product price!" << endl;
-    double product_price = ProductInfo.getPrice();
+    double product_price = ProductInfo.MPproduct_getPrice();
     
     //update new cart_detail_id in database
     string cmd = "UPDATE order_detail_database SET cart_detail_id = '" + newCartDetailID + "' WHERE order_id='" + order_id + "';";
