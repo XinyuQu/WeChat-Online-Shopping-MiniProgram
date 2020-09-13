@@ -1,9 +1,10 @@
 #include "MPorder.hpp"
+#include <string>
 
-using namespace std;
+using namespace std;//
 
 // assume we don't have this row in db before
-MPorder::MPorder(MyDB* db_order, string order_id, string user_id, double price, string remark, time_t create_time, bool is_del)
+MPorder::MPorder(MyDB* db_order, string order_id, string user_id, double price, string remark, string create_time, bool is_del)
 :db_order(db_order), order_id(order_id), user_id(user_id), price(price), create_time(create_time), is_del(is_del) {
     string cmd = "INSERT INTO order_database VALUES ('" + order_id + "','" + user_id + "','" + to_string(price) + ",";
     
@@ -21,7 +22,7 @@ MPorder::MPorder(MyDB* db_order, string order_id, string user_id, double price, 
 }
 
 // assume we have already had this row in db
-MPorder::MPorder(MyDB* db_order, string user_id):db_order(db_order), cart_id(user_id){
+MPorder::MPorder(MyDB* db_order, string user_id):db_order(db_order), user_id(user_id){
     string comd = "SELECT * FROM order_database WHERE user_id='" + user_id + "';"; // assume user id is unique
 
     if(mysql_query(db_order->mysql, comd.c_str())){
@@ -42,7 +43,7 @@ MPorder::MPorder(MyDB* db_order, string user_id):db_order(db_order), cart_id(use
     }
     this->db_order->row = mysql_fetch_row(db_order->result); // assume the user_id is unique
     this->order_id = this->db_order->row[0];
-    this->price = this->db_order->row[2];
+    this->price = stod(this->db_order->row[2]);
     this->remark = this->db_order->row[3];
     this->create_time = this->db_order->row[4];
     this->is_del = this->db_order->row[5];
@@ -55,19 +56,19 @@ int MPorder::MPorder_setOrderID(const string& newOrderID){
     if(mysql_query(db_order->mysql, comd.c_str())){
         cout << "Error from MPorder setOrderID getting price with order_id from order_detail_databse!" << endl;
         cout << "Mysql error message: " << mysql_error(db_order->mysql) << endl;
-        return;
+        return -1;
     }
     db_order->result = mysql_store_result(db_order->mysql);
     if(!db_order->result){
         cout << "Error! Can't retrieve any result from order_detail_database(MPorder setOrderID)" << endl;
         return;
     }
-    int num_rows=mysql_num_rows(result);
+    int num_rows=mysql_num_rows(db_order->result);
     for(int i=0;i<num_rows;i++)
         {
-            row=mysql_fetch_row(result);
-            if(row == NULL) break;
-            totalprice += row[3]
+            db_order->row=mysql_fetch_row(db_order->result);
+            if(db_order->row == NULL) break;
+            totalprice += db_order->row[3]
         }
     this->price = totalprice;
 
