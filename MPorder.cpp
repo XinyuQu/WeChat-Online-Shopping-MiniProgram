@@ -6,7 +6,7 @@ using namespace std;//
 // assume we don't have this row in db before
 MPorder::MPorder(MyDB* db_order, string order_id, string user_id, double price, string remark, string create_time, bool is_del)
 :db_order(db_order), order_id(order_id), user_id(user_id), price(price), create_time(create_time), is_del(is_del) {
-    string cmd = "INSERT INTO order_database VALUES ('" + order_id + "','" + user_id + "','" + to_string(price) + ",";
+    string cmd = "INSERT INTO order_database VALUES ('" + order_id + "','" + user_id + "','" + to_string(price) + "','" + remark + "',";
     
     // SELECT STR_TO_DATE("2017,8,14 10,40,10", "%Y,%m,%d %h,%i,%s");
     cmd += "STR_TO_DATE(\"" + create_time  + "\", \"%Y,%m,%d %h,%i,%s\") , ";
@@ -100,7 +100,7 @@ int MPorder::MPorder_setUserID(const string& newUserID){
 }
 
 int MPorder::MPorder_setRemark(const string& newRemark){
-    string cmd = "UPDATE order_database SET remark = '" + newRemark + "' WHERE user_id='" + user_id + "';";
+    string cmd = "UPDATE order_database SET remarks = '" + newRemark + "' WHERE user_id='" + user_id + "';";
 
     if(mysql_query(db_order->mysql, cmd.c_str())){
         cout << "Error from MPorder setRemark!" << endl;

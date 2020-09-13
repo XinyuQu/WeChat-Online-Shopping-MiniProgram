@@ -7,7 +7,7 @@ using namespace std;
 MPorder_detail::MPorder_detail(MyDB* db_order_detail, string order_detail_id, string order_id, string cart_detail_id, double price)
 :db_order_detail(db_order_detail), order_detail_id(order_detail_id), order_id(order_id), cart_detail_id(cart_detail_id), price(price) {
     string cmd = "INSERT INTO order_detail_database VALUES ('" + order_detail_id + "','" + order_id + "','" 
-    + cart_detail_id + "'," + to_string(price) + ",";
+    + cart_detail_id + "','" + to_string(price) + "')";
 
     if(mysql_query(db_order_detail->mysql, cmd.c_str())){
         cout << "Error from MPorder_detail constructor!" << endl;

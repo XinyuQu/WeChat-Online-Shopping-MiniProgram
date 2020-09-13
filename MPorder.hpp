@@ -27,7 +27,7 @@ public:
     string MPorder_getOrderID() const {return order_id;};
     string MPorder_getUserID() const {return user_id;};
     double MPorder_getPrice() const {return price;};
-    string MPorder_remark() const {return remark;};
+    string MPorder_getRemark() const {return remark;};
     string MPorder_getCreateTime() const {return create_time;};
     bool MPorder_getIsDel() const {return is_del;};
 
