@@ -2,9 +2,8 @@
 #include <vector>
 #include "MPcart.hpp"
 #include "MPcart_detail.hpp"
-// #include "MPcustomer.hpp"
-// #include "MPmerchandise.hpp"
-// #include "MPorder.hpp"
+#include "MPcustomer.hpp"
+#include "MPproduct.hpp"
 #include "MyDB.hpp"
 using namespace std;
 
@@ -13,29 +12,59 @@ int main()
     MyDB* db = new MyDB(); 
     //连接数据库
     db->initDB("cdb-54f0tuve.cd.tencentcdb.com","root","R23BN4xO1KGqZBe7SEpufaLNX","ECommerce",10092);
-    MPcart testCart(db,"new_user_id");
-    string res = testCart.MPcart_getCartID();
-    cout << "testCart original ID: " << res << endl;
+    cout << "connect db successfully!" << endl;
 
-    int i = testCart.MPcart_setCartID("new_user_id_3");
-    res = testCart.MPcart_getCartID();
-    cout << "New cart ID" << res << endl;
+    // // test set cart id (success)
+
+    // MPcart testCart(db,"user_id_3");
+    // string res = testCart.MPcart_getCartID();
+    // cout << "testCart original ID: " << res << endl;
+
+    // int i = testCart.MPcart_setCartID("new_cart_id_3");
+    // res = testCart.MPcart_getCartID();
+    // cout << "!!!" << endl;
+    // cout << "New cart ID " << res << endl;
+
+    // 分割线
     for(int i = 0; i < 40; i++)cout << "-";
     cout << endl;
 
-    // MPcart testCart2(db, "user_id_3", "cart_id_3");
-    MPcart testCart2(db, "user_id_3");
-    cout << "testCart2 cart: " << testCart2.MPcart_getCartID() << endl;
-    cout << "testCart2 user: " << testCart2.MPcart_getUserID() << endl;
+    // // test MPcart set User ID (success)
+    // MPcart testCart(db, "test_user_id");
+    // string res = testCart.MPcart_getUserID();
+    // cout << "testCart original user ID: " << res << endl;
 
-    for(int i = 0; i < 40; i++)cout << "-";
-    cout << endl;
-
-    // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
+    // int i = testCart.MPcart_setUserID("new_user_id");
     
-    MPcart_detail test1_cart_detail(db, "cart_id_1");
-    cout << "cart_detail_1: detail_ID  " << test1_cart_detail.MPcart_detail_getIsDel() << endl;
+    // res = testCart.MPcart_getUserID();
+    // cout << "!!!" << endl;
+    // cout << "New user ID " << res << endl;
 
+    // for(int i = 0; i < 40; i++)cout << "-";
+    // cout << endl;
+
+    // test MPcart detail's constructor (success)
+    // // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
+    
+    MPcart_detail testDetail(db, "new_cart_id_1");
+    cout << "Detail: " << testDetail.MPcart_detail_getCartID() << endl;
+
+
+    // test MPcart_detail setter (all pass)
+    // MPcart_detail test1_cart_detail(db, "new_cart_id_1");
+    // cout << "origin:  " << test1_cart_detail.MPcart_detail_getCartDetailID() << endl;
+    // int res = test1_cart_detail.MPcart_detail_setIsDel(false);
+    // cout << "updated: " << test1_cart_detail.MPcart_detail_getIsDel() << endl;
+
+    // test MPcustomer constructor and getters (pass)
+    // MPcustomer testCustomer(db, "userId");
+    // cout << "success: " << testCustomer.MPcustomer_getemail() << endl;
+    
+
+    // test MPproduct constructor
+    MPproduct testProduct(db, "id");
+    testProduct.MPproduct_setCreateBy("c");
+    cout << "product: " << testProduct.MPproduct_getCreateBy() << endl;
 
     //将用户信息添加到数据库
     //db.exeSQL("CREATE TABLE test2 (col1 int, col2 char, col3 varchar(25))");
