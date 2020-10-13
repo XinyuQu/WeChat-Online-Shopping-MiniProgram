@@ -16,6 +16,10 @@ int main()
     db->initDB("cdb-54f0tuve.cd.tencentcdb.com","root","R23BN4xO1KGqZBe7SEpufaLNX","ECommerce",10092);
     cout << "connect db successfully!" << endl;
 
+    // 分割线
+    for(int i = 0; i < 40; i++)cout << "-";
+    cout << endl;
+
     // // test set cart id (success)
 
     // MPcart testCart(db,"user_id_3");
@@ -48,8 +52,8 @@ int main()
     // test MPcart detail's constructor (success)
     // // MPcart_detail test1_cart_detail(db, "detail_id_1", "cart_id_1", "product_id_1", 1, "2020,8,6 12,00,00", "2020,8,6 12,00,00", false);
     
-    MPcart_detail testDetail(db, "new_cart_id_1");
-    cout << "Detail: " << testDetail.MPcart_detail_getCartID() << endl;
+    // MPcart_detail testDetail(db, "new_cart_id_1");
+    // cout << "Detail: " << testDetail.MPcart_detail_getCartID() << endl;
 
 
     // test MPcart_detail setter (all pass)
@@ -69,11 +73,11 @@ int main()
     // cout << "product: " << testProduct.MPproduct_getCreateBy() << endl;
 
     // test order
-    MPorder_detail testOrderDetail(db, "order_id");
-    cout << "Hi" << endl;
-    testOrderDetail.MPorder_detail_setCartDetailID("cartID");
-    cout << "2" << endl;
-    cout << "cart_detail_id: " << testOrderDetail.MPorder_detail_getCartDetail() << endl;
+    // MPorder_detail testOrderDetail(db, "order_id");
+    // cout << "Hi" << endl;
+    // testOrderDetail.MPorder_detail_setCartDetailID("cartID");
+    // cout << "2" << endl;
+    // cout << "cart_detail_id: " << testOrderDetail.MPorder_detail_getCartDetail() << endl;
 
 
     //将用户信息添加到数据库
@@ -82,6 +86,7 @@ int main()
     // db.exeSQL("INSERT INTO test values('xqq');");
     //将所有用户信息读出，并输出。
     //db.exeSQL("SELECT * from cart_database;");
+    cout << "Program finished!" << endl;
     return 0;
 }
 

@@ -1,24 +1,14 @@
 #include "mainfunc.h"
-#include <iostream>
-#include <vector>
-#include "MPcart.hpp"
-#include "MPcart_detail.hpp"
-#include "MPcustomer.hpp"
-#include "MPproduct.hpp"
-#include "MyDB.hpp"
-#include "MPorder.hpp"
-#include "MPorder_detail.hpp"
-#include <string>
 using namespace std;
 
 long prevOrderID = 0;
 long prevCartID = 0;
 long prevCartDetailID = 0;
 
-int copy(std::string ori,char* dest, int start) {
+int copy(std::string ori, char* dest, int start) {
 	int i = 0;
 	while (ori[i] != 0) {
-		dest[start+i] = ori[i];
+		dest[start + i] = ori[i];
 	}
 	return i - 1;
 }
@@ -27,19 +17,19 @@ int add_cart(std::map<std::string, std::string> data, int len, MyDB* db) {
 	std::string cart_detail;
 	char* id;
 	char* cart;
-	id = (char*)malloc(data["id"].length()+1);
+	id = (char*)malloc(data["id"].length() + 1);
 	memset(id, 0, data["id"].length() + 1);
-	copy(data["id"],id,0);
-	cart = (char*)malloc(data["cart"].length()+1);
-	memset(cart,0, data["cart"].length() + 1);
-	copy(data["cart"], cart,0);
+	copy(data["id"], id, 0);
+	cart = (char*)malloc(data["cart"].length() + 1);
+	memset(cart, 0, data["cart"].length() + 1);
+	copy(data["cart"], cart, 0);
 	string user_id(id); // user_id
 	string oldCart = "";
 
 	MPcart* mpCart = new MPcart(db, user_id);
 	string cart_id = mpCart->MPcart_getCartID();
 	MPcart_detail* mpCartDetail = new MPcart_detail(db, cart_id);
-	if(!mpCartDetail->MPcart_detail_getIsDel()){
+	if (!mpCartDetail->MPcart_detail_getIsDel()) {
 		mpCartDetail->MPcart_detail_setIsDel(true);
 	}
 	string str_cart(cart);
@@ -56,9 +46,13 @@ int add_cart(std::map<std::string, std::string> data, int len, MyDB* db) {
 }
 int cart_tota(std::map<std::string, std::string> data, int len, MyDB* db) {
 	char* id; // user_id
+	int i,count;
+	double price;
+	string temp;
 	id = (char*)malloc(data["id"].length() + 1);
 	memset(id, 0, data["id"].length() + 1);
-	copy(data["id"], id,0);
+	copy(data["id"], id, 0);
+
 	//get the total value of the cart of user with char *id
 	string str_id(id);
 	MPcart* cart = new MPcart(db, id);
@@ -67,33 +61,47 @@ int cart_tota(std::map<std::string, std::string> data, int len, MyDB* db) {
 	string productID = cart_detail->MPcart_detail_getProductID();
 
 	// price
-	MPproduct* product = new MPproduct(db, productID);
-	double price = product->MPproduct_getPrice();
-
+	while (productID[i] != 0) {
+		temp = "";
+		count = 0;
+		temp += productID[i];
+		temp += productID[i+1];
+		temp += productID[i+2];
+		temp += productID[i+3];
+		count += (productID[i + 4]-48)*10;
+		count += (productID[i + 3]-48);
+		MPproduct* product = new MPproduct(db, temp);
+		price += product->MPproduct_getPrice()*count;
+	}
 	return 0;
 }
 int merchan_info(std::map<std::string, std::string> data, int len, char* output, MyDB* db) {
-	int idlen, i, start=0;
+	int idlen, i, start = 0, oprice;
 	char* id;
+	double price;
+	string info, temp="";
 	id = (char*)malloc(data["id"].length() + 1);
 	memset(id, 0, data["id"].length() + 1);
-	copy(data["id"], id,0);
+	copy(data["id"], id, 0);
 	idlen = data["id"].length() / 2;
 	int* ids;
-	ids = (int *)malloc(idlen*sizeof(int));
-	memset(ids,0,idlen);
+	ids = (int *)malloc(idlen * sizeof(int));
+	memset(ids, 0, idlen);
 	for (i = 0; i < idlen; ++i) {
-		ids[i] += (id[2*i]-48)*10;
-		ids[i] += (id[2 * i+1] - 48) * 10;
+		ids[i] += (id[2 * i] - 48) * 10;
+		ids[i] += (id[2 * i + 1] - 48) * 10;
 	}
-	char* data;
-	
+
 	for (i = 0; i < idlen; ++i) {
+		info = "";
 		//ids[i];//product ID
 		//get the info of mechants with id of ids[i]
 		MPproduct* product = new MPproduct(db, to_string(ids[i]));
 		// 熊猫的超长str
-		string info = "name:\'" + product->MPproduct_getProductName() + "\',price:\'¥" + to_string(product->MPproduct_getPrice()) + "\',oldprice:\'¥0\',count:0,image:\"" + product->MPproduct_getThumbnail() + "\",";
+		price = product->MPproduct_getPrice();
+		oprice = price * (10 + rand()% 5)/10;
+		info = "name:\'" + product->MPproduct_getProductName() + "\',price:\'¥" + to_string(product->MPproduct_getPrice()) + "\',oldprice:\'"+ to_string(oprice)+"\',count:0,image:\"" + product->MPproduct_getThumbnail() + "\",";
+		temp += info;
 	}
 }
 int nw_order(std::map<std::string, std::string> data, int len, MyDB* db) {
@@ -117,11 +125,11 @@ int nw_order(std::map<std::string, std::string> data, int len, MyDB* db) {
 	return 0;
 }
 int add_user(std::map<std::string, std::string> data, int len, MyDB* db) {
-	std::string user_id="";
-	std::string user_name="";
-	std::string phone="";
-	std::string email="";
-	std::string time=""; //引入time
+	std::string user_id = "";
+	std::string user_name = "";
+	std::string phone = "";
+	std::string email = "";
+	std::string time = ""; //引入time
 	int sex;
 	if (1 == data.count("id")) user_id = data["id"];
 	if (1 == data.count("name")) user_name = data["name"];
@@ -131,6 +139,6 @@ int add_user(std::map<std::string, std::string> data, int len, MyDB* db) {
 	MPcustomer* customer = new MPcustomer(db, user_id, user_name, phone, email, sex, time, true);
 
 	MPcart* cart = new MPcart(db, user_id, to_string(++prevCartID));
-	MPcart_detail* cart_detail = new MPcart_detail(db, to_string(++prevCartDetailID), cart->MPcart_getCartID(), "",0,time, "2020,8,6 12,00,00", true);
+	MPcart_detail* cart_detail = new MPcart_detail(db, to_string(++prevCartDetailID), cart->MPcart_getCartID(), "", 0, time, "2020,8,6 12,00,00", true);
 	//MPcustomer(info, user_id, name, phone, email, 0, time, false);
 }
