@@ -12,7 +12,10 @@ int copy(std::string ori, char* dest, int start) {
 	}
 	return i - 1;
 }
-int add_cart(std::map<std::string, std::string> data, int len, MyDB* db) {
+
+// key: cart; value: productID(4) + quantity(2) + ...
+// key: id; value
+int add_cart(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	if (len != 2) return -1;
 	std::string cart_detail;
 	char* id;
@@ -44,7 +47,9 @@ int add_cart(std::map<std::string, std::string> data, int len, MyDB* db) {
 	//update the cart with the char *cart that is composed in the frontend
 	return 0;
 }
-int cart_tota(std::map<std::string, std::string> data, int len, MyDB* db) {
+
+// key is user ID; 先不测试
+int cart_tota(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	char* id; // user_id
 	int i,count;
 	double price;
@@ -75,7 +80,11 @@ int cart_tota(std::map<std::string, std::string> data, int len, MyDB* db) {
 	}
 	return 0;
 }
-int merchan_info(std::map<std::string, std::string> data, int len, char* output, MyDB* db) {
+
+// key: id; 
+// value product id 的集合
+// 
+int merchan_info(std::map<std::string, std::string>& data, int len, char* output, MyDB* db) {
 	int idlen, i, start = 0, oprice;
 	char* id;
 	double price;
@@ -103,8 +112,11 @@ int merchan_info(std::map<std::string, std::string> data, int len, char* output,
 		info = "name:\'" + product->MPproduct_getProductName() + "\',price:\'¥" + to_string(product->MPproduct_getPrice()) + "\',oldprice:\'"+ to_string(oprice)+"\',count:0,image:\"" + product->MPproduct_getThumbnail() + "\",";
 		temp += info;
 	}
+	cout << temp << endl;
+	return 0;
 }
-int nw_order(std::map<std::string, std::string> data, int len, MyDB* db) {
+// key: user ID 
+int nw_order(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	char* id, *address, *uid; // id = userID
 	id = (char*)malloc(data["id"].length() + 1);
 	memset(id, 0, data["id"].length() + 1);
@@ -124,7 +136,8 @@ int nw_order(std::map<std::string, std::string> data, int len, MyDB* db) {
 	MPorder* order = new MPorder(db, to_string(++prevOrderID), str_user, price, "remark", "2020,8,6 12,00,00", true);
 	return 0;
 }
-int add_user(std::map<std::string, std::string> data, int len, MyDB* db) {
+// key: user ID
+int add_user(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	std::string user_id = "";
 	std::string user_name = "";
 	std::string phone = "";
@@ -141,4 +154,5 @@ int add_user(std::map<std::string, std::string> data, int len, MyDB* db) {
 	MPcart* cart = new MPcart(db, user_id, to_string(++prevCartID));
 	MPcart_detail* cart_detail = new MPcart_detail(db, to_string(++prevCartDetailID), cart->MPcart_getCartID(), "", 0, time, "2020,8,6 12,00,00", true);
 	//MPcustomer(info, user_id, name, phone, email, 0, time, false);
+	return 0;
 }
