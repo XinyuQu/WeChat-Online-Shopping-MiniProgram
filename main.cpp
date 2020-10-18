@@ -24,24 +24,25 @@ int main()
     for(int i = 0; i < 40; i++)cout << "-";
     cout << endl;
 
-    map<string, string> m; // add_cart
-    m["id"] = "01"; // user iD
-    m["cart"] = "0299"; // id + quantity
-    add_cart(m, 2, db);
+    // adcart pass
+    // map<string, string> m; // add_cart
+    // m["id"] = "01"; // user iD
+    // m["cart"] = "0299"; // id + quantity
+    // add_cart(m, 2, db);
 
-    map<string, string> merchanINFO;
-    merchanINFO["id"] = "03"; // product id
-    char* str;
-    merchan_info(merchanINFO, 0, str, db);
+    // map<string, string> merchanINFO;
+    // merchanINFO["id"] = "03"; // product id
+    // char* str;
+    // merchan_info(merchanINFO, 0, str, db);
 
-    map<string, string> nwOrder;
-    nwOrder["id"] = "04"; // userID
-    nw_order(nwOrder, 0, db);
+    // map<string, string> nwOrder;
+    // nwOrder["id"] = "01"; // userID
+    // nw_order(nwOrder, 0, db);
 
     map<string, string> addUser;
-    addUser["id"] = "05"; // userID
+    addUser["id"] = "07"; // userID
     addUser["name"] = "Ray";
-    addUser["phone"] = "666-666-6666";
+    addUser["phone"] = "13900000000";
     addUser["email"] = "lalala@qq.com";
     add_user(addUser, 0, db);
 

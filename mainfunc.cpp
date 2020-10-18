@@ -9,6 +9,7 @@ int copy(std::string ori, char* dest, int start) {
 	int i = 0;
 	while (ori[i] != 0) {
 		dest[start + i] = ori[i];
+		i++;
 	}
 	return i - 1;
 }
@@ -28,7 +29,9 @@ int add_cart(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	copy(data["cart"], cart, 0);
 	string user_id(id); // user_id
 	string oldCart = "";
+	cout << "Hello" << endl;
 
+	cout << user_id << endl;
 	MPcart* mpCart = new MPcart(db, user_id);
 	string cart_id = mpCart->MPcart_getCartID();
 	MPcart_detail* mpCartDetail = new MPcart_detail(db, cart_id);
@@ -98,14 +101,18 @@ int merchan_info(std::map<std::string, std::string>& data, int len, char* output
 	memset(ids, 0, idlen);
 	for (i = 0; i < idlen; ++i) {
 		ids[i] += (id[2 * i] - 48) * 10;
-		ids[i] += (id[2 * i + 1] - 48) * 10;
+		ids[i] += (id[2 * i + 1] - 48);
 	}
 
 	for (i = 0; i < idlen; ++i) {
 		info = "";
 		//ids[i];//product ID
 		//get the info of mechants with id of ids[i]
-		MPproduct* product = new MPproduct(db, to_string(ids[i]));
+		string prodID = to_string(ids[i]);
+		if(ids[i] < 10){
+			prodID = "0" + prodID;
+		}	
+		MPproduct* product = new MPproduct(db, prodID);
 		// 熊猫的超长str
 		price = product->MPproduct_getPrice();
 		oprice = price * (10 + rand()% 5)/10;
@@ -142,7 +149,7 @@ int add_user(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	std::string user_name = "";
 	std::string phone = "";
 	std::string email = "";
-	std::string time = ""; //引入time
+	std::string time =  "2020,8,6 12,00,00"; //引入time
 	int sex;
 	if (1 == data.count("id")) user_id = data["id"];
 	if (1 == data.count("name")) user_name = data["name"];
@@ -150,6 +157,7 @@ int add_user(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	if (1 == data.count("email")) email = data["email"];
 
 	MPcustomer* customer = new MPcustomer(db, user_id, user_name, phone, email, sex, time, true);
+
 
 	MPcart* cart = new MPcart(db, user_id, to_string(++prevCartID));
 	MPcart_detail* cart_detail = new MPcart_detail(db, to_string(++prevCartDetailID), cart->MPcart_getCartID(), "", 0, time, "2020,8,6 12,00,00", true);
