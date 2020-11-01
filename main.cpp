@@ -24,6 +24,7 @@ int main()
     for(int i = 0; i < 40; i++)cout << "-";
     cout << endl;
 
+    cout << "Hello" << endl;
     // adcart pass
     // map<string, string> m; // add_cart
     // m["id"] = "01"; // user iD
@@ -39,12 +40,12 @@ int main()
     // nwOrder["id"] = "01"; // userID
     // nw_order(nwOrder, 0, db);
 
-    map<string, string> addUser;
-    addUser["id"] = "07"; // userID
-    addUser["name"] = "Ray";
-    addUser["phone"] = "13900000000";
-    addUser["email"] = "lalala@qq.com";
-    add_user(addUser, 0, db);
+    //map<string, string> addUser;
+   // addUser["id"] = "07"; // userID
+    //addUser["name"] = "Ray";
+   // addUser["phone"] = "13900000000";
+   // addUser["email"] = "lalala@qq.com";
+   // add_user(addUser, 0, db);
 
 
 
