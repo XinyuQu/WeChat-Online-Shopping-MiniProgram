@@ -85,3 +85,34 @@ bool MyDB::exeSQL(string sql)
     return true;
 
 }
+
+bool MyDB::checkID(string& checkCMD){
+    if (mysql_query(mysql,checkCMD.c_str()))
+    {
+    
+	    cout << "Get error here!!!" << endl;
+        cout<<"Query Error: "<<mysql_error(mysql) << endl;
+        return false;
+    }
+    else // 查询成功
+    {
+        result = mysql_store_result(mysql);
+        int  num_fields = mysql_num_fields(result);
+        int  num_rows=mysql_num_rows(result); 
+        
+        if(num_rows > 1) {
+            cout << "Error! More than one item have same ID!" << endl;
+        }
+        
+        row=mysql_fetch_row(result);
+        if(*(row[0]) == '0'){
+            cout << "No valid ID ";
+            return false;
+        }
+
+        
+    }
+
+    return true;
+}
+

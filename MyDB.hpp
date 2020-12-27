@@ -14,8 +14,8 @@ class MyDB
     bool initDB(string host,string user,string pwd,string db_name, unsigned int port); //连接mysql
     bool exeSQL(string sql);   //执行sql语句
 
-    // 
-    
+    // check if ID exists
+    bool checkID(string& checkCMD);
     
     //private:
     MYSQL *mysql;          //连接mysql句柄指针
