@@ -2,6 +2,7 @@
 #define MPproduct_hpp
 #include <iostream>
 #include <string>
+#include <vector>
 #include "MyDB.hpp"
 using namespace std;
 
@@ -51,5 +52,7 @@ class MPproduct
     int MPproduct_setModifyBy(const string& str);
     int MPproduct_setIsDel(const bool newDel);
   
+
+    vector<string> getAllProductID() const;
 };
 #endif

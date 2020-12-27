@@ -207,3 +207,33 @@ int MPproduct::MPproduct_setIsDel(const bool newDel){
     db_product->result = mysql_store_result(db_product->mysql);
     return 0;
 }
+
+vector<string> MPproduct::getAllProductID() const{
+    vector<string> id_vec;
+
+    string cmd = "SELECT * FROM product_database";
+    //db_product->exeSQL(cmd);
+    if(mysql_query(db_product->mysql, cmd.c_str()))
+    {
+	    cout << "Get error here!!!" << endl;
+        cout<<"Query Error: "<<mysql_error(db_product->mysql) << endl;
+        return id_vec;
+    }
+    else // 查询成功
+    {
+        db_product->result = mysql_store_result(db_product->mysql);  //获取结果集
+        if (db_product->result)  // 返回了结果集
+        {
+           int  num_rows=mysql_num_rows(db_product->result);       //获取结果集中总共的行数
+           for(int i=0;i<num_rows;i++) //输出每一行
+            {
+                //获取下一行数据
+                db_product->row=mysql_fetch_row(db_product->result);
+                if(db_product->row == NULL) break;
+                id_vec.push_back(db_product->row[0]);
+            }
+
+        }
+    }
+    return id_vec;
+}

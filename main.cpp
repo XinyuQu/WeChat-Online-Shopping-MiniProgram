@@ -9,6 +9,8 @@
 #include "MPorder_detail.hpp"
 
 #include "mainfunc.h"
+
+#include <vector>
 #include <map>
 #include <string>
 using namespace std;
@@ -26,7 +28,14 @@ int main()
 
     cout << "Hello" << endl;
 
-    MPproduct testDetail(db, "1111");
+    MPproduct testProduct(db, "03");
+    vector<string> id_vec = testProduct.getAllProductID();
+    for(int i = 0; i < id_vec.size(); i++){
+        cout << id_vec[i] << endl;
+    }
+
+    cout << "end test" << endl;
+    
     // adcart pass
     // map<string, string> m; // add_cart
     // m["id"] = "01"; // user iD
