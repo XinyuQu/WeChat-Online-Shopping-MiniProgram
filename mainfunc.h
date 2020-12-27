@@ -1,4 +1,5 @@
-#pragma once
+#ifndef mainfunc_h
+#define mainfunc_h
 #include <map>
 #include <string>
 #include <string.h>
@@ -20,3 +21,4 @@ int cart_tota(std::map<std::string, std::string>& data, int len, MyDB* db);
 int merchan_info(std::map<std::string, std::string>& data, int len, char* output, MyDB* db);
 int nw_order(std::map<std::string, std::string>& data, int len, MyDB* db);
 int add_user(std::map<std::string, std::string>& data, int len, MyDB* db);
+#endif /* maindfunc_h */
