@@ -89,7 +89,6 @@ bool MyDB::exeSQL(string sql)
 bool MyDB::checkID(string& checkCMD){
     if (mysql_query(mysql,checkCMD.c_str()))
     {
-    
 	    cout << "Get error here!!!" << endl;
         cout<<"Query Error: "<<mysql_error(mysql) << endl;
         return false;

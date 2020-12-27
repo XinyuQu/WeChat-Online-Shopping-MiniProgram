@@ -20,7 +20,17 @@ MPcustomer::MPcustomer(MyDB* db_customer, string user_id, string user_name, stri
         return;
     }
 }
+
+// assume we have already had this row in db
 MPcustomer::MPcustomer(MyDB* db_customer, string user_id): db_customer(db_customer), user_id(user_id){
+    // check if ID exist
+    string cmd_check = "SELECT COUNT(*) FROM user_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
+    // db_cart_detail->exeSQL(cmd_check);
+    if(!db_customer->checkID(cmd_check)){
+        cout << "in MPcustomer constructor!" << endl;
+        return;
+    }
+    
     string comd = "SELECT * FROM user_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
 
     if(mysql_query(db_customer->mysql, comd.c_str())){
@@ -32,12 +42,6 @@ MPcustomer::MPcustomer(MyDB* db_customer, string user_id): db_customer(db_custom
     db_customer->result = mysql_store_result(db_customer->mysql);
     if(!db_customer->result){
         cout << "Error! Can't retrieve any result from database(MPcustomer)" << endl;
-        return;
-    }
-    
-    int num_rows = mysql_num_rows(db_customer->result);
-    if(num_rows > 1){
-        cout << "Error! More than one User have same ID!(MPcustomer)" << endl;
         return;
     }
 

@@ -20,9 +20,17 @@ MPcart::MPcart(MyDB* db_cart, string user_id, string cart_id):db_cart(db_cart), 
     }
 }
 
-
+// assume we have already had this row in db
 MPcart::MPcart(MyDB* db_cart, string user_id) 
 : db_cart(db_cart), user_id(user_id){
+    // check if ID exist
+    string cmd_check = "SELECT COUNT(*) FROM cart_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
+    // db_cart_detail->exeSQL(cmd_check);
+    if(!db_cart->checkID(cmd_check)){
+        cout << "in MPcart constructor!" << endl;
+        return;
+    }
+
     string comd = "SELECT * FROM cart_database WHERE user_id='" + user_id + "';"; // assume cart id is unique
 
     if(mysql_query(db_cart->mysql, comd.c_str())){
@@ -36,11 +44,6 @@ MPcart::MPcart(MyDB* db_cart, string user_id)
         return;
     }
     
-    int num_rows = mysql_num_rows(db_cart->result);
-    if(num_rows > 1){
-        cout << "Error! More than one User have same ID! (MPcart)" << endl;
-        return;
-    }
     this->db_cart->row = mysql_fetch_row(db_cart->result); // assume user_id is unique
     this->cart_id = this->db_cart->row[0];
 }

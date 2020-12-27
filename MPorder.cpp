@@ -23,6 +23,13 @@ MPorder::MPorder(MyDB* db_order, string order_id, string user_id, double price, 
 
 // assume we have already had this row in db
 MPorder::MPorder(MyDB* db_order, string user_id):db_order(db_order), user_id(user_id){
+    // check if ID exist
+    string cmd_check = "SELECT COUNT(*) FROM order_database WHERE user_id='" + user_id + "';"; // assume user id is unique
+    if(!db_order->checkID(cmd_check)){
+        cout << "in MPorder constructor!" << endl;
+        return;
+    }
+    
     string comd = "SELECT * FROM order_database WHERE user_id='" + user_id + "';"; // assume user id is unique
 
     if(mysql_query(db_order->mysql, comd.c_str())){
@@ -37,10 +44,7 @@ MPorder::MPorder(MyDB* db_order, string user_id):db_order(db_order), user_id(use
     }
     
     int num_rows = mysql_num_rows(db_order->result);
-    if(num_rows > 1){
-        cout << "Error! More than one user have same ID!(MPorder)" << endl;
-        return;
-    }
+    
     this->db_order->row = mysql_fetch_row(db_order->result); // assume the user_id is unique
     this->order_id = this->db_order->row[0];
     this->price = stod(this->db_order->row[2]);

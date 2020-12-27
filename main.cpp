@@ -25,12 +25,8 @@ int main()
     cout << endl;
 
     cout << "Hello" << endl;
-    try{
-        MPcart_detail testDetail(db, "1111");
-    }
-    catch(string& err){
-        cout << err << endl;
-    }
+
+    MPproduct testDetail(db, "1111");
     // adcart pass
     // map<string, string> m; // add_cart
     // m["id"] = "01"; // user iD

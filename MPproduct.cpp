@@ -34,6 +34,14 @@ MPproduct::MPproduct(MyDB* db_product, string product_id, string product_name, s
 
 // assume we have already had this row in db
 MPproduct::MPproduct(MyDB* db_product, string product_id) : db_product(db_product), product_id(product_id){
+    // check if ID exist
+    string cmd_check = "SELECT COUNT(*) FROM product_database WHERE product_id='" + product_id + "';"; // assume cart id is unique
+    // db_cart_detail->exeSQL(cmd_check);
+    if(!db_product->checkID(cmd_check)){
+        cout << "in MPproduct constructor!" << endl;
+        return;
+    }
+    
     string comd = "SELECT * FROM product_database WHERE product_id='" + product_id + "';"; // assume cart id is unique
     // cout << comd << endl;
 

@@ -18,6 +18,13 @@ MPorder_detail::MPorder_detail(MyDB* db_order_detail, string order_detail_id, st
 
 // assume we have already had this row in db
 MPorder_detail::MPorder_detail(MyDB* db_order_detail, string order_id):db_order_detail(db_order_detail), order_id(order_id){
+    // check if ID exist
+    string cmd_check = "SELECT COUNT(*) FROM order_detail_database WHERE order_id='" + order_id + "';";
+    if(!db_order_detail->checkID(cmd_check)){
+        cout << "in MPorder_detail constructor!" << endl;
+        return;
+    }
+    
     string comd = "SELECT * FROM order_detail_database WHERE order_id='" + order_id + "';";
 
     if(mysql_query(db_order_detail->mysql, comd.c_str())){
@@ -32,10 +39,6 @@ MPorder_detail::MPorder_detail(MyDB* db_order_detail, string order_id):db_order_
     }
     
     int num_rows = mysql_num_rows(db_order_detail->result);
-    if(num_rows > 1){
-        cout << "Error! More than one order have same ID!(MPorder_detail)" << endl;
-        return;
-    }
     this->db_order_detail->row = mysql_fetch_row(db_order_detail->result); // assume the order_id is unique    
     this->order_detail_id = this->db_order_detail->row[0];
     this->cart_detail_id = this->db_order_detail->row[2];
