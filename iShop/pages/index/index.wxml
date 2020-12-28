@@ -1,0 +1,1 @@
+<view class="container" bindtap="toHome">hello world</view>

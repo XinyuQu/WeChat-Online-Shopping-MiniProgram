@@ -1,0 +1,123 @@
+nohup: ignoring input
+*** Error in `./test': free(): invalid next size (fast): 0x00000000018cab90 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81679)[0x7f0012401679]
+./test[0x410058]
+./test[0x4029db]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f00123a2505]
+./test[0x4024c9]
+======= Memory map: ========
+00400000-00418000 r-xp 00000000 fd:01 1048830                            /root/backend/miniProgram/test
+00617000-00618000 r--p 00017000 fd:01 1048830                            /root/backend/miniProgram/test
+00618000-00619000 rw-p 00018000 fd:01 1048830                            /root/backend/miniProgram/test
+018af000-018d0000 rw-p 00000000 00:00 0                                  [heap]
+7f000c000000-7f000c021000 rw-p 00000000 00:00 0 
+7f000c021000-7f0010000000 ---p 00000000 00:00 0 
+7f0010342000-7f0010348000 r-xp 00000000 fd:01 3927                       /usr/lib64/libnss_dns-2.17.so
+7f0010348000-7f0010547000 ---p 00006000 fd:01 3927                       /usr/lib64/libnss_dns-2.17.so
+7f0010547000-7f0010548000 r--p 00005000 fd:01 3927                       /usr/lib64/libnss_dns-2.17.so
+7f0010548000-7f0010549000 rw-p 00006000 fd:01 3927                       /usr/lib64/libnss_dns-2.17.so
+7f0010549000-7f0010555000 r-xp 00000000 fd:01 3929                       /usr/lib64/libnss_files-2.17.so
+7f0010555000-7f0010754000 ---p 0000c000 fd:01 3929                       /usr/lib64/libnss_files-2.17.so
+7f0010754000-7f0010755000 r--p 0000b000 fd:01 3929                       /usr/lib64/libnss_files-2.17.so
+7f0010755000-7f0010756000 rw-p 0000c000 fd:01 3929                       /usr/lib64/libnss_files-2.17.so
+7f0010756000-7f001075c000 rw-p 00000000 00:00 0 
+7f001075c000-7f001075d000 ---p 00000000 00:00 0 
+7f001075d000-7f0010f5d000 rw-p 00000000 00:00 0 
+7f0010f5d000-7f0010fbd000 r-xp 00000000 fd:01 4410                       /usr/lib64/libpcre.so.1.2.0
+7f0010fbd000-7f00111bd000 ---p 00060000 fd:01 4410                       /usr/lib64/libpcre.so.1.2.0
+7f00111bd000-7f00111be000 r--p 00060000 fd:01 4410                       /usr/lib64/libpcre.so.1.2.0
+7f00111be000-7f00111bf000 rw-p 00061000 fd:01 4410                       /usr/lib64/libpcre.so.1.2.0
+7f00111bf000-7f00111e3000 r-xp 00000000 fd:01 4427                       /usr/lib64/libselinux.so.1
+7f00111e3000-7f00113e2000 ---p 00024000 fd:01 4427                       /usr/lib64/libselinux.so.1
+7f00113e2000-7f00113e3000 r--p 00023000 fd:01 4427                       /usr/lib64/libselinux.so.1
+7f00113e3000-7f00113e4000 rw-p 00024000 fd:01 4427                       /usr/lib64/libselinux.so.1
+7f00113e4000-7f00113e6000 rw-p 00000000 00:00 0 
+7f00113e6000-7f00113fc000 r-xp 00000000 fd:01 3939                       /usr/lib64/libresolv-2.17.so
+7f00113fc000-7f00115fb000 ---p 00016000 fd:01 3939                       /usr/lib64/libresolv-2.17.so
+7f00115fb000-7f00115fc000 r--p 00015000 fd:01 3939                       /usr/lib64/libresolv-2.17.so
+7f00115fc000-7f00115fd000 rw-p 00016000 fd:01 3939                       /usr/lib64/libresolv-2.17.so
+7f00115fd000-7f00115ff000 rw-p 00000000 00:00 0 
+7f00115ff000-7f0011602000 r-xp 00000000 fd:01 4556                       /usr/lib64/libkeyutils.so.1.5
+7f0011602000-7f0011801000 ---p 00003000 fd:01 4556                       /usr/lib64/libkeyutils.so.1.5
+7f0011801000-7f0011802000 r--p 00002000 fd:01 4556                       /usr/lib64/libkeyutils.so.1.5
+7f0011802000-7f0011803000 rw-p 00003000 fd:01 4556                       /usr/lib64/libkeyutils.so.1.5
+7f0011803000-7f0011811000 r-xp 00000000 fd:01 8788                       /usr/lib64/libkrb5support.so.0.1
+7f0011811000-7f0011a11000 ---p 0000e000 fd:01 8788                       /usr/lib64/libkrb5support.so.0.1
+7f0011a11000-7f0011a12000 r--p 0000e000 fd:01 8788                       /usr/lib64/libkrb5support.so.0.1
+7f0011a12000-7f0011a13000 rw-p 0000f000 fd:01 8788                       /usr/lib64/libkrb5support.so.0.1
+7f0011a13000-7f0011a44000 r-xp 00000000 fd:01 4955                       /usr/lib64/libk5crypto.so.3.1
+7f0011a44000-7f0011c43000 ---p 00031000 fd:01 4955                       /usr/lib64/libk5crypto.so.3.1
+7f0011c43000-7f0011c45000 r--p 00030000 fd:01 4955                       /usr/lib64/libk5crypto.so.3.1
+7f0011c45000-7f0011c46000 rw-p 00032000 fd:01 4955                       /usr/lib64/libk5crypto.so.3.1
+7f0011c46000-7f0011c49000 r-xp 00000000 fd:01 5365                       /usr/lib64/libcom_err.so.2.1
+7f0011c49000-7f0011e48000 ---p 00003000 fd:01 5365                       /usr/lib64/libcom_err.so.2.1
+7f0011e48000-7f0011e49000 r--p 00002000 fd:01 5365                       /usr/lib64/libcom_err.so.2.1
+7f0011e49000-7f0011e4a000 rw-p 00003000 fd:01 5365                       /usr/lib64/libcom_err.so.2.1
+7f0011e4a000-7f0011f23000 r-xp 00000000 fd:01 4961                       /usr/lib64/libkrb5.so.3.3
+7f0011f23000-7f0012122000 ---p 000d9000 fd:01 4961                       /usr/lib64/libkrb5.so.3.3
+7f0012122000-7f0012130000 r--p 000d8000 fd:01 4961                       /usr/lib64/libkrb5.so.3.3
+7f0012130000-7f0012133000 rw-p 000e6000 fd:01 4961                       /usr/lib64/libkrb5.so.3.3
+7f0012133000-7f001217d000 r-xp 00000000 fd:01 4951                       /usr/lib64/libgssapi_krb5.so.2.2
+7f001217d000-7f001237d000 ---p 0004a000 fd:01 4951                       /usr/lib64/libgssapi_krb5.so.2.2
+7f001237d000-7f001237e000 r--p 0004a000 fd:01 4951                       /usr/lib64/libgssapi_krb5.so.2.2
+7f001237e000-7f0012380000 rw-p 0004b000 fd:01 4951                       /usr/lib64/libgssapi_krb5.so.2.2
+7f0012380000-7f0012543000 r-xp 00000000 fd:01 3911                       /usr/lib64/libc-2.17.so
+7f0012543000-7f0012743000 ---p 001c3000 fd:01 3911                       /usr/lib64/libc-2.17.so
+7f0012743000-7f0012747000 r--p 001c3000 fd:01 3911                       /usr/lib64/libc-2.17.so
+7f0012747000-7f0012749000 rw-p 001c7000 fd:01 3911                       /usr/lib64/libc-2.17.so
+7f0012749000-7f001274e000 rw-p 00000000 00:00 0 
+7f001274e000-7f0012763000 r-xp 00000000 fd:01 13                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f0012763000-7f0012962000 ---p 00015000 fd:01 13                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f0012962000-7f0012963000 r--p 00014000 fd:01 13                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f0012963000-7f0012964000 rw-p 00015000 fd:01 13                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f0012964000-7f0012a65000 r-xp 00000000 fd:01 3919                       /usr/lib64/libm-2.17.so
+7f0012a65000-7f0012c64000 ---p 00101000 fd:01 3919                       /usr/lib64/libm-2.17.so
+7f0012c64000-7f0012c65000 r--p 00100000 fd:01 3919                       /usr/lib64/libm-2.17.so
+7f0012c65000-7f0012c66000 rw-p 00101000 fd:01 3919                       /usr/lib64/libm-2.17.so
+7f0012c66000-7f0012d4f000 r-xp 00000000 fd:01 4235                       /usr/lib64/libstdc++.so.6.0.19
+7f0012d4f000-7f0012f4e000 ---p 000e9000 fd:01 4235                       /usr/lib64/libstdc++.so.6.0.19
+7f0012f4e000-7f0012f56000 r--p 000e8000 fd:01 4235                       /usr/lib64/libstdc++.so.6.0.19
+7f0012f56000-7f0012f58000 rw-p 000f0000 fd:01 4235                       /usr/lib64/libstdc++.so.6.0.19
+7f0012f58000-7f0012f6d000 rw-p 00000000 00:00 0 
+7f0012f6d000-7f00131a3000 r-xp 00000000 fd:01 4618                       /usr/lib64/libcrypto.so.1.0.2k
+7f00131a3000-7f00133a3000 ---p 00236000 fd:01 4618                       /usr/lib64/libcrypto.so.1.0.2k
+7f00133a3000-7f00133bf000 r--p 00236000 fd:01 4618                       /usr/lib64/libcrypto.so.1.0.2k
+7f00133bf000-7f00133cc000 rw-p 00252000 fd:01 4618                       /usr/lib64/libcrypto.so.1.0.2k
+7f00133cc000-7f00133d0000 rw-p 00000000 00:00 0 
+7f00133d0000-7f0013437000 r-xp 00000000 fd:01 4620                       /usr/lib64/libssl.so.1.0.2k
+7f0013437000-7f0013637000 ---p 00067000 fd:01 4620                       /usr/lib64/libssl.so.1.0.2k
+7f0013637000-7f001363b000 r--p 00067000 fd:01 4620                       /usr/lib64/libssl.so.1.0.2k
+7f001363b000-7f0013642000 rw-p 0006b000 fd:01 4620                       /usr/lib64/libssl.so.1.0.2k
+7f0013642000-7f0013644000 r-xp 00000000 fd:01 3917                       /usr/lib64/libdl-2.17.so
+7f0013644000-7f0013844000 ---p 00002000 fd:01 3917                       /usr/lib64/libdl-2.17.so
+7f0013844000-7f0013845000 r--p 00002000 fd:01 3917                       /usr/lib64/libdl-2.17.so
+7f0013845000-7f0013846000 rw-p 00003000 fd:01 3917                       /usr/lib64/libdl-2.17.so
+7f0013846000-7f001385b000 r-xp 00000000 fd:01 4230                       /usr/lib64/libz.so.1.2.7
+7f001385b000-7f0013a5a000 ---p 00015000 fd:01 4230                       /usr/lib64/libz.so.1.2.7
+7f0013a5a000-7f0013a5b000 r--p 00014000 fd:01 4230                       /usr/lib64/libz.so.1.2.7
+7f0013a5b000-7f0013a5c000 rw-p 00015000 fd:01 4230                       /usr/lib64/libz.so.1.2.7
+7f0013a5c000-7f0013a73000 r-xp 00000000 fd:01 3937                       /usr/lib64/libpthread-2.17.so
+7f0013a73000-7f0013c72000 ---p 00017000 fd:01 3937                       /usr/lib64/libpthread-2.17.so
+7f0013c72000-7f0013c73000 r--p 00016000 fd:01 3937                       /usr/lib64/libpthread-2.17.so
+7f0013c73000-7f0013c74000 rw-p 00017000 fd:01 3937                       /usr/lib64/libpthread-2.17.so
+7f0013c74000-7f0013c78000 rw-p 00000000 00:00 0 
+7f0013c78000-7f0013f56000 r-xp 00000000 fd:01 9813                       /usr/lib64/mysql/libmysqlclient.so.18.0.0
+7f0013f56000-7f0014155000 ---p 002de000 fd:01 9813                       /usr/lib64/mysql/libmysqlclient.so.18.0.0
+7f0014155000-7f001415e000 r--p 002dd000 fd:01 9813                       /usr/lib64/mysql/libmysqlclient.so.18.0.0
+7f001415e000-7f0014172000 rw-p 002e6000 fd:01 9813                       /usr/lib64/mysql/libmysqlclient.so.18.0.0
+7f0014172000-7f0014178000 rw-p 00000000 00:00 0 
+7f0014178000-7f001419a000 r-xp 00000000 fd:01 3501                       /usr/lib64/ld-2.17.so
+7f0014385000-7f0014390000 rw-p 00000000 00:00 0 
+7f0014396000-7f0014399000 rw-p 00000000 00:00 0 
+7f0014399000-7f001439a000 r--p 00021000 fd:01 3501                       /usr/lib64/ld-2.17.so
+7f001439a000-7f001439b000 rw-p 00022000 fd:01 3501                       /usr/lib64/ld-2.17.so
+7f001439b000-7f001439c000 rw-p 00000000 00:00 0 
+7ffe08b1e000-7ffe08b3f000 rw-p 00000000 00:00 0                          [stack]
+7ffe08b75000-7ffe08b77000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+start listen
+message from outside: GET http://175.24.81.196:714/merchan_info HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Encoding: gzip
+Cookie: ZDEDebuggerPresent="php,phtml,php3"; session=ooollj8mmakt11boa94noj8cr0; _d_id=f6420240a71abde86609735f44f3f8; JSESSIONID=_0a8wP4HMpJfQkt0eVlt8GMnhfFASZTAWbrpf5xiCJi-cdFXwcyT!1430275579!-1322669900; ASPSESSIONIDQQTQBRDA=OHFKBDNBAKAOLKDNGANPMAMM; ASP.NET_SessionId=wzv2ovtocstkl3hb5dlcjwmy; ASPSESSIONIDSATRTQQA=BNHBBIECDBEAJOOGAHAJHCJG; X_CACHE_KEY=e005a2c869d498593183d0f3e9707d57; ASPSESSIONIDQQQDQTSD=BHNMDNPBNPHJFBMMHBDGKIPP; mid=rz9zeu; yunsuo_session_verify=2f894134fc41ba6a45ec966a6fa4edb4; visitor_tag=1582425fac952fbaea8; vds=gaLkNpnpEktvGhakmcahOznrIpnkNXPkahIWIhbXLvihiqLpIYOfoCNpbqav; gps_long=121.40372; gps_lat=31.16707; NmSc_2132_saltkey=B05duk73; NmSc_2132_lastvisit=1605142325; NmSc_2132_sid=pS55wG; NmSc_2132_lastact=1605145925%09home.php%09space; NmSc_2132_home_diymode=1; G1gn_2132_saltkey=icelZp1m; G1gn_2132_lastvisit=1605142338; G1gn_2132_sid=A1

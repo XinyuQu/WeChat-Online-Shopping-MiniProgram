@@ -1,0 +1,38 @@
+<view class="container">
+  <!-- 左侧分类栏 -->
+  <view class="left_navi">
+    <block wx:for="{{classlist}}" wx:key="cart_id">
+      <view class="left_cate">
+        <view class="left_navi_items{{curNav == item.cart_id ? '.active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cart_id}}">
+          {{item.cart_name}}
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 右侧商品栏 -->
+  <view class="right_navi">
+    <view wx:if="{{classlist[curIndex].ishaveChild}}">
+      <block wx:for="{{classlist[curIndex].children}}" wx:key="id">
+      <!-- 右侧每一个商品的布局 -->
+        <view class="right_item" data-id="{{item.item_id}}" bindtap="toDetail">
+          <image src="{{item.image}}"></image>
+          <view class="item_info">
+            <view class="info_title">
+              <view class="details_name">{{item.name}}</view>
+              <view class="details_price">¥ {{item.price}}</view>
+            </view>
+            <view class="details_buy">
+              <image mode="heightFix" src="/image/buy.png" bindtap="addToCar"></image>
+            </view>
+          </view>
+        </view>
+        <!-- 单独商品布局结束 -->
+        <view class="break_line"></view>
+      </block>
+      <view class="no_item">到底啦~~</view>
+    </view>
+    <view wx:if="{{!classlist[curIndex].ishaveChild}}">
+      店家正在拼命补货中
+    </view>
+  </view>
+</view>

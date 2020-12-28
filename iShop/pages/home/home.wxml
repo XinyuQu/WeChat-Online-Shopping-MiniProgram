@@ -1,0 +1,83 @@
+<view class="panel">
+  <navigator url="/pages/section/section" open-type="switchTab" hover-class="nav-hover" class="panel-item">
+    <view class="panel-img">
+      <image src="/image/prag.png"></image>
+    </view>
+    <text class="panel-info">
+    产妇专区
+     </text>
+  </navigator>
+
+   <navigator url="/pages/section/section" open-type="switchTab" hover-class="nav-hover" class="panel-item">
+    <view class="panel-img">
+      <image src="/image/baby.png"></image>
+    </view>
+    <text class="panel-info">
+    宝宝专区
+     </text>
+  </navigator>
+
+   <navigator url="/pages/section/section" open-type="switchTab" hover-class="nav-hover" class="panel-item">
+    <view class="panel-img">
+      <image src="/image/after.png"></image>
+    </view>
+    <text class="panel-info">
+    护理专区
+     </text>
+  </navigator>
+</view>
+
+ <view class="separate"></view>
+
+<!--文章-->
+
+<view class="category-title">
+    <text class="name">相关文章</text>
+    <view class="line_flag"></view>
+</view>
+
+<view class="article"> 
+<!--如果有外链们，就放这里：-->
+<!--   
+  <block wx:for-items="" wx:key="">
+  <navigator url=""> 
+  -->
+
+  <!--图片是我随便找的可以删掉-->
+  
+  <view class="pic">
+    <image src="/image/testimage.jpg" mode="widthFix"></image>
+  </view>
+
+  <!-- 
+    </navigator> 
+    -->
+
+  <view class="text"> 
+    <view class="title"> 
+     这里是标题
+    </view>
+    <view class="time">
+      这里是上传日期
+    </view>
+  </view>
+
+<view class="breakline"></view>
+
+<!--
+  </block>
+  -->
+</view>
+
+<view class="category-title">
+  <text class="name">商品推荐</text>
+  <view class="line_name">
+      <text>你需要的都在这里</text>
+  </view>
+</view>
+
+<view class="product">
+
+
+</view>
+

@@ -1,0 +1,117 @@
+/* section页面全局css */
+.container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  color: #939393;
+}
+/* 左侧分类栏css */
+.left_navi{
+  position: fixed;   
+  width: 25%;  
+  height: 100%;  
+  background: #f5f5f5;  
+  text-align: center;  
+  left: 0;
+  top:0;
+}
+.left_navi .left_navi_items {
+  height: 100%;   
+  width: 100%;
+  padding: 6px 0;   
+  border-bottom: 1px solid #dedede;   
+  font-size: 14px; 
+  color: #000;
+  background: #f5f5f5;
+  text-align: center;
+}
+.left_navi .left_navi_items.active {
+  background: #fff;  
+  color: #f0145a;
+}
+.left_cate{
+  display: flex;  
+  flex-direction: row;  
+
+  height: 40px;  
+  line-height: 40px;  
+  padding: 6px 0;  
+  border-bottom: 1px solid #dedede;  
+  font-size: 14px; 
+  background: #fff;  
+  color: #f0145a;
+}
+
+/* 右侧商品栏 */
+.right_navi{
+  position: absolute;  
+    top: 0;  
+    right: 0;  
+    flex: 1;  
+
+    width: 75%;  
+    height: 100%;  
+    padding: 10px;  
+    box-sizing: border-box;  
+    background: #fff;
+}
+.right_item{
+  width: 100%;
+  height: 200rpx;
+  margin-bottom: 15rpx;
+  display: flex;
+}
+image{
+  height: 200rpx;  
+  width: 200rpx;
+  margin-top: 15rpx; 
+  margin-right: 30rpx;
+}
+.item_info{
+  text-align: left;
+  width: 60%;
+  justify-content: space-between;
+  padding: 10rpx 5rpx;
+}
+.item_info .info_title{
+  height: 80%;
+  width: 100%;
+  text-align: left;
+  justify-content: space-between;
+}
+.details_name{
+  display: block;  
+  font-size: 30rpx;  
+  color: black;
+}
+.details_price{
+  font-size: 35rpx;
+  color: #f0145a;
+  display: flex;
+}
+.break_line{
+  width: 100%;
+  height: 2rpx;
+  background-color: lightgray;
+  text-align: center;
+  display: inline-block;
+}
+.details_buy{
+  float: right;
+  height: 20%;
+}
+.details_buy_text{
+  display: block;
+  font-size: 30rpx;
+  background: red;
+  color: white;
+}
+.details_buy image{
+  height: 100%;
+  position: relative;
+}
+.no_item{
+  text-align: center;
+  top: 15rpx;
+}

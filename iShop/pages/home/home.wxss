@@ -1,0 +1,91 @@
+
+.panel{
+  display: flex; 
+  justify-content: space-evenly; 
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
+.panel-item{
+  width: 140rpx;
+  height:180rpx; 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20rpx;
+}
+
+.panel-img image{
+  position:relative;
+  width: 100rpx;
+  height: 100rpx;
+}
+.panel-info{
+  position:absolute;
+  font-size: 30rpx;
+  height:40rpx;
+  font-family: '微软雅黑';
+  margin-top:57rpx;
+}
+
+/* 分割线 */
+.separate {
+  height: 10rpx;
+  background-color: #fff;
+}
+
+.category-title {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25rpx;
+  margin-bottom: 0rpx;
+}
+
+.category-title .name {
+  font-size: 40rpx;
+  text-align: center;
+  margin: 10rpx auto;
+}
+
+.line_flag {
+  width: 80rpx;
+  height: 1rpx;
+  display: inline-block;
+  margin: 20rpx auto;
+  background-color: lightgray;
+  text-align: center;
+}
+
+.article{
+  display: flex;
+  flex-direction: column;
+  padding-left:30rpx;
+  padding-right:30rpx;
+}
+
+.pic image{
+  width: 100%;
+}
+
+.text{
+  display:flex;
+  flex-direction: column;
+}
+
+.title{
+  font-weight: 600; 
+  font-size: 40rpx;
+} 
+
+.time{
+  margin-top: 5rpx;
+  margin-left:10rpx;
+  color:gray;
+}
+
+
+.line_name{
+  font-size: 25rpx;
+  color: #98989f;
+  text-align:center;
+
+}

@@ -64,10 +64,7 @@ int main(){
 		http_reqana* dat = new http_reqana(rec_buff, recv_len);
 		std::map<std::string, std::string> outside;
 		sta=dat->get_data(outside);
-		sta=1;
 		path=dat->get_path();
-		printf("message from outside: %s\n", rec_buff);
-		// lalal
 		if (equal("/add_cart",path)) {
 			add_cart(outside, 2, db);
 			sta = 0;
@@ -78,9 +75,8 @@ int main(){
 		}
 		if (equal("/merchan_info", path)) {
 			output = (char*)malloc(2048);
-			sta=merchan_info(outside, 0, output, db);
-			printf(output);
-			printf("%d\n",sta);
+			merchan_info(outside, 0, output, db);
+			sta = 0;
 		}
 		if (equal("/nw_order", path)) {
 			nw_order(outside, 0, db);

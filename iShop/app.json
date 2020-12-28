@@ -1,0 +1,50 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/home/home",
+    "pages/section/section",
+    "pages/cart/cart",
+    "pages/myinfo/myinfo",
+    "pages/detail/detail",
+    "pages/template/template",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "iShop",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "color": "#707070",
+    "selectedColor": "#d81e06",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list":[{
+      "pagePath": "pages/home/home",
+      "iconPath": "image/home.png",
+      "selectedIconPath": "image/home-on.png",
+      "text": "首页"
+    },
+    {
+      "pagePath": "pages/section/section",
+      "iconPath": "image/section.png",
+      "selectedIconPath": "image/section-on.png",
+      "text": "分类"
+    },
+    {
+      "pagePath": "pages/cart/cart",
+      "iconPath": "image/shop.png",
+      "selectedIconPath": "image/shop-on.png",
+      "text": "购物车"
+    },
+    {
+      "pagePath": "pages/myinfo/myinfo",
+      "iconPath": "image/my.png",
+      "selectedIconPath": "image/my-on.png",
+      "text": "我的"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

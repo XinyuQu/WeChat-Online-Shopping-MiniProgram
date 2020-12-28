@@ -1,0 +1,66 @@
+<import src="../template/template.wxml" />
+<!-- 详情上方滚动栏 -->
+<swiper indicator-dots centered-Slides circular autoplay interval="3500">
+  <block wx:for="{{items.imgUrls}}" wx:key="id">
+    <swiper-item>
+      <image src="{{item}}" mode="widthFix"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 非图片详情 -->
+<view>
+  <view class="product-name-wrap">
+    {{items.name}}
+  </view>
+  <view class="product-price-wrap">
+      <view>
+        <p class="product-price-new">¥ {{items.price}}</p>
+        <p class="product-price-old">原价 ¥{{items.oldprice}}</p>
+      </view>
+    </view>
+</view>
+
+<!-- 图片详情 -->
+<view class="details">
+  <scroll-view scroll-y="true">
+    <text>商品详情</text>
+    <block wx:for-items="{{items.detailUrls}}" wx:key="name">
+      <image class="image_detail" src="{{item}}" mode="widthFix"/>
+    </block>
+    <view class="temp"></view>
+  </scroll-view>
+</view>
+
+<!-- 底层浮窗 -->
+<view class="detail-nav">
+  <image src="/image/back.png" bindtap="toLastPage"/>
+  <view class="line_nav"></view>
+  <image src="/image/shop.png" bindtap="toCart" />
+  <button data-goodid="1"  class="button-green" bindtap="toggleDialog" >加入购物车</button>
+  <button class="button-red" bindtap="immeBuy" formType="submit">立即购买</button>
+</view>
+
+<!-- 加入购物车弹窗 -->
+<view class="dialog {{showDialog?'dialog--show':''}}">
+  <view class="dialog__mask" bindtap="closeDialog" />
+  <view class="dialog__container">
+    <view class="row">
+      <icon bindtap="closeDialog" class="image-close" type="cancel" size="25"/>
+      <image class="image-sku" src="{{items.image}}"></image>
+      <view class="column">
+        <text class="sku-price">￥ {{items.totalMoney}}</text>
+        <text class="sku-title">销量 {{items.buyRate}} 件</text>
+        <text class="sku-title">商品编码：{{items.item_id}}</text>
+      </view>
+    </view>
+    <text class="border-line"></text>
+    <view class="row">
+      <text>购买数量</text>
+      <view class="quantity-position">
+        <template is="quantity" data="{{ ...items,index:index}}" />
+      </view>
+    </view>
+    <text class="border-line"></text>
+    <button class="button-addCar" bindtap="addCar" formType="submit">确定</button>
+  </view>
+</view>
