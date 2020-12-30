@@ -1,9 +1,9 @@
 #include "mainfunc.h"
 using namespace std;
 
-long prevOrderID = 4;
-long prevCartID = 0;
-long prevCartDetailID = 0;
+long prevOrderID = 100;
+long prevCartID = 100;
+long prevCartDetailID = 100;
 
 int copy(std::string &ori, char* dest, int start) {
 	int i = 0;
@@ -42,7 +42,14 @@ int add_cart(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	cout << "Hello" << endl;
 
 	cout << user_id << endl;
-	MPcart* mpCart = new MPcart(db, user_id);
+	MPcart* mpCart;
+	try{
+		mpCart = new MPcart(db, user_id);
+	}catch(string err){
+		cout << "Heyyy" << endl;
+		add_user(data, 1, db);
+		mpCart = new MPcart(db, user_id);
+	}	
 	string cart_id = mpCart->MPcart_getCartID();
 	MPcart_detail* mpCartDetail = new MPcart_detail(db, cart_id);
 	if (!mpCartDetail->MPcart_detail_getIsDel()) {
@@ -99,6 +106,43 @@ int cart_tota(std::map<std::string, std::string>& data, int len, MyDB* db) {
 	return 0;
 }
 
+string allProductIDs(MyDB* db){
+	vector<string> id_vec;
+
+    string cmd = "SELECT * FROM product_database";
+    //db_product->exeSQL(cmd);
+    if(mysql_query(db->mysql, cmd.c_str()))
+    {
+	    cout << "Get error here!!!" << endl;
+        cout<<"Query Error: "<<mysql_error(db->mysql) << endl;
+        return id_vec;
+    }
+    else // 查询成功
+    {
+        db->result = mysql_store_result(db->mysql);  //获取结果集
+        if (db->result)  // 返回了结果集
+        {
+           int  num_rows=mysql_num_rows(db->result);       //获取结果集中总共的行数
+           for(int i=0;i<num_rows;i++) //输出每一行
+            {
+                //获取下一行数据
+                db->row=mysql_fetch_row(db->result);
+                if(db->row == NULL) break;
+                id_vec.push_back(db->row[0]);
+            }
+        }
+    }
+
+	string res = "[";
+	for(string s: id_vec){
+		res += s;
+		res+=",";
+	}
+	res.erase(res.size() - 1);
+	res += "]";
+	return res;
+}
+
 // key: id; 
 // value product id 的集合
 // 
@@ -139,7 +183,7 @@ int merchan_info(std::map<std::string, std::string>& data, int len, char* output
 		// 熊猫的超长str
 		price = product->MPproduct_getPrice();
 		oprice = price * (10 + rand() % 5) / 10;
-		info = prodID+":{name:\"" + product->MPproduct_getProductName() + "\",price:\"¥" + to_string(product->MPproduct_getPrice()) + "\",oldprice:\"" + to_string(oprice) + "\',count:0,image:\"" + product->MPproduct_getThumbnail() + "\"}";
+		info = prodID+":{name:\"" + product->MPproduct_getProductName() + "\",price:\"¥" + to_string(product->MPproduct_getPrice()) + "\",oldprice:\"" + to_string(oprice) + "\",count:0,image:\"" + product->MPproduct_getThumbnail() + "\", detail:\"" + product->MPproduct_getDetail() + "\"}";
 		temp += info;
 	}
 	temp += "}";
