@@ -1,3 +1,3 @@
 # miniProgram
 
-This is the source code for the backend of a wechat miniprogram.
+This is a template for the backend system of a wechat online shopping miniprogram.
